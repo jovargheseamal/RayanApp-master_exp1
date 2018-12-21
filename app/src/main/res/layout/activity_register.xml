@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    tools:context=".RegisterActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/toolbar"
+        android:elevation="6dp"
+        android:minHeight="50dp"
+
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <TextView
+            android:id="@+id/appname"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="30dp"
+            android:text="Rayan"
+            android:textSize="20dp"
+            android:textColor="#ffff"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+    <ScrollView
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollcmp"
+        android:padding="10dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                >
+
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Owner Name"
+                    android:id="@+id/lname"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/gridbg"
+
+                    />
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_below="@+id/cmpname"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Address"
+                    android:id="@+id/addrs"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/gridbg"
+                    />
+                <EditText
+                    android:padding="10dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/addrs"
+                    android:hint="Email"
+                    android:id="@+id/email"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/gridbg"
+                    />
+                <EditText
+                    android:padding="10dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Contact Number"
+                    android:id="@+id/contactno"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/email"
+                    android:background="@color/gridbg"
+                    />
+                <EditText
+                    android:padding="10dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="User Name"
+                    android:id="@+id/uname"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/contactno"
+                    android:background="@color/gridbg"
+                    />
+                <EditText
+                    android:padding="10dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Company Name"
+                    android:id="@+id/cmpname"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/lname"
+                    android:background="@color/gridbg"
+                    />
+
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Password"
+                    android:id="@+id/paswd"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/uname"
+                    android:background="@color/gridbg"
+                    />
+                <EditText
+                    android:padding="10dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Confirm Password"
+                    android:id="@+id/cnfmpaswd"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/paswd"
+                    android:background="@color/gridbg"
+                    />
+
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                >
+
+                <Button
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/regbtn"
+                    android:textColor="@color/secondary"
+                    android:background="@drawable/tvborder2"
+                    android:text="Register"
+                    android:layout_marginTop="20dp"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

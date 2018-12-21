@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gridbg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CompanyFragment">
+
+     <RelativeLayout
+         android:layout_margin="10dp"
+         android:background="#AAffffff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+         <LinearLayout
+             android:layout_marginTop="20dp"
+             android:id="@+id/edit"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:gravity="end">
+
+             <ImageView
+                 android:clickable="true"
+                 android:id="@+id/editcompany"
+                 android:layout_marginRight="10dp"
+                 android:layout_width="30dp"
+                 android:layout_height="30dp"
+                 android:src="@drawable/edit"/>
+
+         </LinearLayout>
+
+    <!-- TODO: Update blank fragment layout -->
+         <android.support.v7.widget.CardView
+             android:id="@+id/userprof"
+             android:layout_below="@+id/edit"
+             app:cardElevation="0dp"
+             android:layout_width="100dp"
+             android:layout_height="100dp"
+             android:layout_centerHorizontal="true"
+             app:cardCornerRadius="50dp">
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:gravity="center"
+                 android:text="B"
+                 android:textColor="@color/headerfont"
+                 android:textSize="40dp"
+                 android:textStyle="bold" />
+
+         </android.support.v7.widget.CardView>
+
+         <TextView
+             android:padding="20dp"
+             android:id="@+id/compname"
+             android:layout_below="@+id/userprof"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_centerHorizontal="true"
+             android:textSize="30dp"
+             android:text="Company name here"
+             android:textColor="@color/headerfont"
+             android:textStyle="bold"
+
+             tools:ignore="UnknownId" />
+
+
+         <TextView
+             android:padding="10dp"
+             android:layout_marginTop="30dp"
+             android:layout_below="@+id/compname"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_centerHorizontal="true"
+             android:textSize="20dp"
+             android:text="@string/Content"
+             android:textStyle="italic"
+
+             tools:ignore="UnknownId" />
+
+
+
+
+     </RelativeLayout>
+
+
+
+</ScrollView>

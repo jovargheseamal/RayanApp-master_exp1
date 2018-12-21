@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/toolbar"
+        android:elevation="6dp"
+        android:minHeight="50dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <TextView
+            android:id="@+id/appname"
+            android:layout_marginLeft="5dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="20dp"
+            android:text="Rayan"
+            android:textSize="20dp"
+            android:textColor="#ffff"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+
+
+    <RelativeLayout
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        >
+
+
+
+        <EditText
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="User Name"
+            android:padding="10dp"
+            android:id="@+id/username"
+            android:background="@color/gridbg"
+            />
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/username"
+            android:id="@+id/password"
+            android:hint="Password"
+            android:background="@color/gridbg"/>
+        <RelativeLayout
+            android:layout_below="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/lay2">
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:id="@+id/login"
+                android:layout_marginTop="25dp"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/reglink"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Register"
+            android:textSize="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/lay2"/>
+
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

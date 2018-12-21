@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LayoutBG"
+    tools:context=".ProfileActivity">
+
+
+
+    <ScrollView
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollcmp"
+        android:padding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Scroll_lay3"
+            android:layout_gravity="center_horizontal">
+
+
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                >
+
+                <LinearLayout
+                    android:layout_marginTop="0dp"
+                    android:id="@+id/editprof"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end">
+
+                    <ImageView
+                        android:clickable="true"
+                        android:id="@+id/editprofile"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/edit"/>
+
+                </LinearLayout>
+
+
+                <FrameLayout
+                    android:id="@+id/userprofpic"
+                    android:padding="10dp"
+                    android:layout_below="@+id/editprof"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <android.support.v7.widget.CardView
+                    android:layout_marginTop="20dp"
+                    app:cardElevation="1dp"
+                    android:padding="10dp"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    app:cardCornerRadius="75dp"
+                    app:cardBackgroundColor="@color/layoutBG">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="B"
+                        android:textColor="@color/headerfont"
+                        android:textSize="40dp"
+                        android:textStyle="bold" />
+
+                </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="bottom|end"
+                        app:cardCornerRadius="20dp"
+                        android:layout_margin="2dp"
+                        app:cardElevation="3dp"
+                        >
+
+                        <ImageView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/camera1"
+                            android:scaleType="centerCrop"/>
+
+
+
+                    </android.support.v7.widget.CardView>
+
+
+                </FrameLayout>
+
+
+                <TextView
+                    android:textColor="@color/headerfont"
+                    android:layout_below="@+id/userprofpic"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="Admin Name"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:padding="10dp"
+                    android:id="@+id/cmpnyname"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_horizontal"
+                    android:hint="User name"
+                    android:padding="10dp"
+                    android:id="@+id/profcmpnyuname"
+                    android:layout_below="@id/cmpnyname"/>
+
+                <android.support.v7.widget.CardView
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/frame1"
+
+                    android:layout_below="@+id/profcmpnyuname">
+                 <LinearLayout
+                     android:orientation="vertical"
+                     android:padding="10dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent">
+
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="50dp"
+                         android:text="Contact Information"
+                         android:textColor="@color/secondary"
+
+                         android:textStyle="bold"
+                         android:textSize="15dp"/>
+
+                     <LinearLayout
+                         android:orientation="horizontal"
+                         android:layout_width="match_parent"
+                         android:gravity="center"
+                         android:layout_height="wrap_content"
+                         android:id="@+id/cntctpersn">
+
+                         <TextView
+                             android:gravity="center_vertical"
+                             android:layout_weight="1"
+                             android:layout_marginTop="0dp"
+                             android:layout_width="match_parent"
+                             android:layout_height="50dp"
+                             android:padding="10dp"
+                             android:textColor="@color/headerfont"
+                             android:text="Company Name"
+
+                             />
+                         <TextView
+
+                             android:layout_weight="1"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:padding="10dp"
+
+                             android:textColor="@color/headerfont"
+                             android:text="Company Name "
+
+                             />
+
+                     </LinearLayout>
+
+
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:orientation="horizontal">
+
+
+
+                <TextView
+                    android:layout_weight="1"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+                    android:textColor="@color/headerfont"
+                    android:text="Trade Liscence"
+
+                    />
+
+                         <TextView
+                             android:layout_weight="1"
+
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:padding="10dp"
+                             android:textColor="@color/headerfont"
+                             android:text="Trade Liscence"
+                             android:id="@+id/tradelis"
+                             />
+                     </LinearLayout>
+                 </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/frame2"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_below="@id/frame1">
+
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="ID Information"
+                            android:textColor="@color/secondary"
+                            android:textStyle="bold"
+                            android:textSize="15dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_marginTop="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="10dp"
+                                android:text="Emirates ID"
+                                android:textColor="@color/headerfont"
+
+                                />
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_marginTop="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="10dp"
+                                android:text="Emirates ID"
+                                android:id="@+id/emiratesID"
+                                android:textColor="@color/headerfont"
+                                />
+
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:textColor="@color/headerfont"
+                                android:padding="10dp"
+                                android:text="Passport"
+                                />
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/headerfont"
+                                android:layout_height="50dp"
+                                android:padding="10dp"
+                                android:text="Passport"
+                                android:id="@+id/passprt"
+
+                                />
+
+                        </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+
+
+                </android.support.v7.widget.CardView>
+
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

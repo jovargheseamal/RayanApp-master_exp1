@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_centerHorizontal="true"
+    tools:context=".AddCompany">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollcmp"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:padding="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lay3"
+            android:layout_gravity="center_horizontal">
+
+
+
+            <RelativeLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                >
+
+
+
+
+
+                <EditText
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Company Name"
+                    android:padding="10dp"
+                    android:id="@+id/cmpnyname"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Contact Person"
+                    android:id="@+id/cntctpersn"
+                    android:layout_below="@id/cmpnyname"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Trade Liscence"
+                    android:id="@+id/tradelis"
+                    android:layout_below="@id/cntctpersn"/>
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/tradelis"
+                    android:id="@+id/tradeexp"
+                    android:hint="Trade Lisence Expiry"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/tradeexp"
+                    android:id="@+id/trn"
+                    android:hint="TRN"/>
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/trn"
+                    android:id="@+id/labrcardno"
+                    android:hint="Labour Card Number"/>
+
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/labrcardno"
+                    android:id="@+id/immigratncardno"
+                    android:hint="Immigration Card Number"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/immigratncardno"
+                    android:id="@+id/immigratnexp"
+                    android:hint="Immigration Card Expiry"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/immigratnexp"
+                    android:id="@+id/tenancy"
+                    android:hint="Tenancy"/>
+
+                <RelativeLayout
+
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/tenancy"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_margin="10dp"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/sbmt"
+                        android:text="Submit"
+                        android:textStyle="bold"
+                        android:background="@drawable/tvborder2"
+                        android:textColor="@color/secondary"
+                        android:gravity="center"/>
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MyApplication</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+    <string name="Content">
+        also known as Content Co, is a Los Angeles-based modern media
+        studio and a division of Psyop Media.
+        Psyop acquired Content  Co in 2018, expanding the company’s suite of services and creator network.
+        Founded by Stuart McLean in 2008, the company creates and distributes diverse branded
+        Angeles-based modern media studio and a division of Psyop Media.
+        Angeles-based modern media studio and a division of Psyop Media.
+        Angeles-based modern media studio and a division of Psyop Media.
+    </string>
+
+    <string name="Contact">
+        Contact No. : 77785545965
+        Email ID  : rayan@gmail.com
+        Website : www.rayan.com
+    </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="google_maps_API_key">AIzaSyA4S6RnylJ0kiTixG56W_fHjblc8swErmk</string>
+
+    AIzaSyA4S6RnylJ0kiTixG56W_fHjblc8swErmk
+
+</resources>

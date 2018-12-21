@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#bf1e2e</color>
+    <color name="colorPrimaryDark">#931623</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="toolbar">#bf1e2e</color>
+    <color name="secondary">#c49a6a</color>
+    <color name="grid">#666666</color>
+    <color name="gridbg">#32666666</color>
+    <color name="gridtext">#ffad37</color>
+    <color name="headerfont">#5d89a0</color>
+    <color name="layoutBG">#c2d0d7</color>
+    <color name="ListBG"> #cbcfd2</color>
+    <color name="RecyclerBG"> #f2f2f1</color>
+    <color name="LayoutBG"> #EDEFF0</color>
+
+
+
+
+
+
+</resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center_horizontal"
+
+    tools:context=".OTPCheck">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/toolbar"
+        android:elevation="6dp"
+        android:minHeight="50dp"
+
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <TextView
+            android:id="@+id/appname"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="30dp"
+            android:text="Rayan"
+            android:textSize="20dp"
+            android:textColor="#ffff"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You are one step from us"
+            android:id="@+id/txt"/>
+
+        <EditText
+            android:background="@color/gridbg"
+            android:padding="10dp"
+            android:id="@+id/otptxt"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/txt"
+            android:layout_marginTop="50dp"
+            android:hint="Enter Your OTP"
+            android:password="true" />
+        <RelativeLayout
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/otptxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="confirm OTP"
+                android:id="@+id/cnfmotp"/>
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:layout_below="@+id/cnfmotp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resend OTP"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

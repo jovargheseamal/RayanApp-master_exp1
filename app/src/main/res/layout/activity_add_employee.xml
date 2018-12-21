@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollcmp"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:padding="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lay3"
+           >
+
+
+
+            <RelativeLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_centerHorizontal="true">
+
+                <EditText
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:background="@color/gridbg"
+                    android:layout_below="@+id/emp_comp_name"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Employee Name"
+                    android:id="@+id/empname"
+                    />
+                <EditText
+                    android:padding="10dp"
+                    android:background="@color/gridbg"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/empname"
+                    android:id="@+id/empid"
+                    android:hint="Employee ID"/>
+                <EditText
+
+                    android:padding="10dp"
+                    android:background="@color/gridbg"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/empid"
+                    android:id="@+id/emp_addrss"
+                    android:hint="Address"/>
+
+
+                <EditText
+
+                    android:padding="10dp"
+                    android:background="@color/gridbg"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/emp_addrss"
+                    android:id="@+id/emp_phn_no"
+                    android:hint="Phone Number"/>
+
+
+                <EditText
+                    android:background="@color/gridbg"
+                    android:padding="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/emp_phn_no"
+                    android:hint="DOB"
+                    android:id="@+id/emp_dob"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:background="@color/gridbg"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/emp_dob"
+                    android:hint="Email"
+                    android:id="@+id/emp_email"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:background="@color/gridbg"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/emp_email"
+                    android:hint="Emirates ID"
+                    android:id="@+id/emp_emirates_id"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/emp_emirates_id"
+                    android:hint="Passport No"
+                    android:background="@color/gridbg"
+                    android:id="@+id/emp_passport_no"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:background="@color/gridbg"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/emp_passport_no"
+                    android:hint="Passport Expiry"
+                    android:id="@+id/emp_passport_exp"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/emp_passport_exp"
+                    android:hint="Work Permit"
+                    android:id="@+id/emp_work_permit"/>
+
+                <EditText
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/emp_work_permit"
+                    android:hint="Work Permit Expiry"
+                    android:id="@+id/emp_work_permit_exp"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/emp_work_permit_exp"
+                    android:hint="Visa Expiry"
+                    android:id="@+id/emp_visa_exp"/>
+
+                <EditText
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:background="@color/gridbg"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/emp_visa_exp"
+                    android:hint="UID Number"
+                    android:id="@+id/emp_uid_no"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="300dp"
+                    android:background="@color/gridbg"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/emp_uid_no"
+                    android:hint="File Number"
+                    android:id="@+id/emp_file_no"/>
+
+                <EditText
+                    android:padding="10dp"
+                    android:layout_width="300dp"
+                    android:background="@color/gridbg"
+                    android:layout_height="50dp"
+                    android:hint="Company Name"
+                    android:id="@+id/emp_comp_name"/>
+
+                <RelativeLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/emp_file_no"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_margin="10dp"
+                        android:background="@drawable/tvborder2"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/emp_submit"
+                        android:textColor="@color/secondary"
+                        android:textStyle="bold"
+                        android:text="Submit"
+                        android:gravity="center"/>
+                </RelativeLayout>
+
+
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

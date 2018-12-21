@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/company"
+        android:icon="@drawable/file"
+        android:title="Details" />
+
+    <item
+        android:id="@+id/users"
+        android:icon="@drawable/user"
+        android:title="Users" />
+
+    <item
+        android:id="@+id/emp"
+        android:icon="@drawable/partnership"
+        android:title="Employee" />
+
+
+
+</menu>

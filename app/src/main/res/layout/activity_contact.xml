@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Contact">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!-- TODO: Update blank fragment layout -->
+
+
+        <TextView
+            android:padding="20dp"
+            android:id="@+id/compname"
+            android:layout_below="@+id/userprof"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="30dp"
+            android:text="Rayan"
+            android:textColor="@color/headerfont"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+
+            tools:ignore="UnknownId" />
+
+
+        <TextView
+            android:padding="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/compname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:textSize="22dp"
+            android:text="
+         Contact No. : 77785545965
+         Email ID    : rayan@gmail.com
+         Website     : www.rayan.com"
+            android:textStyle="italic"
+
+            tools:ignore="UnknownId" />
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
