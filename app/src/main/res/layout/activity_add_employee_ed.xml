@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_centerHorizontal="true"
+    tools:context=".AddCompany">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollcmp"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:background="@color/LayoutBG"
+            android:padding="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lay3"
+            android:layout_gravity="center_horizontal">
+
+
+
+            <RelativeLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                >
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/emp_comp_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Company name"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"
+                        />
+
+
+
+                    <EditText
+                        android:layout_marginTop="8dp"
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/gridbg"
+                        android:layout_height="40dp"
+                        android:hint="Company Name"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/empname"
+                    android:layout_below="@+id/emp_comp_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Employee Name"
+                    android:textSize="15dp"
+                    android:textColor="@android:color/black"
+                    />
+
+                    <EditText
+                        android:layout_marginTop="8dp"
+                        android:padding="10dp"
+                        android:background="@color/gridbg"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:hint="Employee Name"
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:id="@+id/empid"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/empname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Employee ID"
+                    android:textSize="15dp"
+                    android:textColor="@android:color/black"
+                    />
+
+
+                    <EditText
+                        android:padding="10dp"
+                        android:background="@color/gridbg"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:hint="Employee ID"/>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+
+                    android:id="@+id/emp_addrss"
+                    android:layout_below="@+id/empid"
+
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Address"
+                    android:textSize="15dp"
+                    android:textColor="@android:color/black"
+                    />
+
+                    <EditText
+
+                        android:padding="10dp"
+                        android:background="@color/gridbg"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:hint="Address"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:id="@+id/emp_phn_no"
+                    android:layout_below="@+id/emp_addrss"
+
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Contact No"
+                    android:textSize="15dp"
+                    android:textColor="@android:color/black"
+                    />
+
+                    <EditText
+
+                        android:padding="10dp"
+                        android:background="@color/gridbg"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:hint="Phone Number"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:id="@+id/emp_dob"
+                    android:layout_below="@+id/emp_phn_no"
+
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="D.O.B"
+                    android:textSize="15dp"
+                    android:textColor="@android:color/black"
+                    />
+
+
+                    <LinearLayout
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:id="@+id/emp_DB_day"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:id="@+id/emp_DB_mnth"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:id="@+id/emp_DB_year"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+
+                    android:id="@+id/emp_email"
+                    android:layout_below="@+id/emp_dob"
+
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="E-mail"
+                    android:textSize="15dp"
+                    android:textColor="@android:color/black"
+                    />
+
+                    <EditText
+                        android:padding="10dp"
+                        android:background="@color/gridbg"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:hint="Email"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:id="@+id/emp_emirates_id"
+                    android:layout_below="@+id/emp_email"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Emirates ID"
+                    android:textSize="15dp"
+                    android:textColor="@android:color/black"
+                    />
+
+
+                    <EditText
+                        android:padding="10dp"
+                        android:background="@color/gridbg"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:hint="Emirates ID"
+                       />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:id="@+id/emp_passport_no"
+                    android:layout_below="@+id/emp_emirates_id"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Passport no"
+                    android:textSize="15dp"
+                    android:textColor="@android:color/black"
+                    />
+
+
+                    <EditText
+                        android:padding="10dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:hint="Passport No"
+                        android:background="@color/gridbg"
+                        />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+
+                    android:id="@+id/emp_passport_exp"
+                    android:layout_below="@+id/emp_passport_no"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Passport Exp"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"
+                        />
+
+
+                    <LinearLayout
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:id="@+id/emp_work_permit"
+                    android:layout_below="@+id/emp_passport_exp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Work Permit"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"
+                        />
+
+
+                    <EditText
+                        android:padding="10dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/gridbg"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:hint="Work Permit"
+                       />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+
+                    android:id="@+id/emp_work_permit_exp"
+                    android:layout_below="@+id/emp_work_permit"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Work permit Exp"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"
+                        />
+
+
+                    <LinearLayout
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:id="@+id/emp_visa_exp"
+                    android:layout_below="@+id/emp_work_permit_exp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Visa Exp"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                        <Spinner
+                            android:background="@drawable/spinnerbg"
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1">
+
+                        </Spinner>
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:id="@+id/emp_uid_no"
+                    android:layout_below="@+id/emp_visa_exp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="UID No"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"
+                        />
+
+
+                    <EditText
+                        android:padding="10dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/gridbg"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:hint="UID No"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:id="@+id/emp_file_no"
+                    android:layout_below="@+id/emp_uid_no"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="File No"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"
+                        />
+
+
+                    <EditText
+                        android:padding="10dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="300dp"
+                        android:background="@color/gridbg"
+                        android:layout_height="40dp"
+                        android:hint="File Number"
+                       />
+
+                </LinearLayout>
+
+
+
+
+
+                <RelativeLayout
+
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/emp_file_no"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_margin="10dp"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/sbmt"
+                        android:text="Submit"
+                        android:textStyle="bold"
+                        android:background="@drawable/tvborder2"
+                        android:textColor="@color/secondary"
+                        android:gravity="center"/>
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

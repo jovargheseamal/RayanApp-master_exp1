@@ -12,15 +12,11 @@
         Angeles-based modern media studio and a division of Psyop Media.
     </string>
 
-    <string name="Contact">
-        Contact No. : 77785545965
-        Email ID  : rayan@gmail.com
-        Website : www.rayan.com
-    </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="google_maps_API_key">AIzaSyA4S6RnylJ0kiTixG56W_fHjblc8swErmk</string>
+    <string name="google_maps_API_key">AIzaSyBloyIyLNqyO2p2_Zssl6CPCiQPtiRXIkY</string>
+    <string name="title_activity_maps">Map</string>
 
-    AIzaSyA4S6RnylJ0kiTixG56W_fHjblc8swErmk
+
 
 </resources>
