@@ -112,7 +112,7 @@
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/user_submit"
-                android:textColor="@color/secondary"
+                android:textColor="@android:color/white"
                 android:textStyle="bold"
                 android:text="Submit"
                 android:gravity="center"/>

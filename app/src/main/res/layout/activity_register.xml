@@ -65,7 +65,7 @@
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:hint="Owner Name"
-                    android:id="@+id/lname"
+                    android:id="@+id/OwnerName"
                     android:layout_marginTop="20dp"
                     android:background="@color/gridbg"
 
@@ -118,7 +118,7 @@
                     android:hint="Company Name"
                     android:id="@+id/cmpname"
                     android:layout_marginTop="20dp"
-                    android:layout_below="@+id/lname"
+                    android:layout_below="@+id/OwnerName"
                     android:background="@color/gridbg"
                     />
 
@@ -159,7 +159,7 @@
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/regbtn"
-                    android:textColor="@color/secondary"
+                    android:textColor="@android:color/white"
                     android:background="@drawable/tvborder2"
                     android:text="Register"
                     android:layout_marginTop="20dp"/>

@@ -172,7 +172,9 @@
                              android:padding="10dp"
 
                              android:textColor="@color/headerfont"
-                             android:text="Company Name "
+                             android:text="Company Name1,
+                                           Company Name2,
+                                           Company Name3"
 
                              />
 
