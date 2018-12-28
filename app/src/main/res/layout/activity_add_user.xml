@@ -43,18 +43,8 @@
             android:id="@+id/usrname"
             android:layout_below="@+id/usrcmpny"/>
 
-        <EditText
-            android:padding="10dp"
-            android:background="@color/gridbg"
-            android:layout_marginTop="20dp"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:hint="User Type"
-            android:layout_below="@id/usrname"
-            android:id="@+id/usrtype"
-            />
 
-        <EditText
+        <TextView
             android:padding="10dp"
             android:background="@color/gridbg"
             android:layout_width="300dp"
@@ -71,7 +61,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:hint="Contact Number"
-            android:layout_below="@id/usrtype"
+            android:layout_below="@id/usrname"
             android:id="@+id/usr_contact_no"
             />
 
