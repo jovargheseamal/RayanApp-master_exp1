@@ -18,7 +18,7 @@ public class CompanyFragment extends Fragment {
     ImageView edit ;
 
     public CompanyFragment() {
-        // Required empty public constructor
+        // Required empty public constructor//
     }
 
 
