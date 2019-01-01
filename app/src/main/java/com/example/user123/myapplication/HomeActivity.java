@@ -63,7 +63,7 @@ public class HomeActivity extends BaseActivity implements OnMapReadyCallback {
         btncmpny.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                Intent intent = new Intent(HomeActivity.this, ViewCompanyActivity.class);
                 startActivity(intent);
             }
         });
@@ -110,8 +110,8 @@ public class HomeActivity extends BaseActivity implements OnMapReadyCallback {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng Rayan = new LatLng(25.432085,55.532238);
+        mMap.addMarker(new MarkerOptions().position(Rayan).title("Rayan"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Rayan));
     }
 }

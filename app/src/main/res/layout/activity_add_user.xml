@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 
-    android:layout_gravity="center_horizontal"
+    android:gravity="center"
     android:layout_height="match_parent"
     tools:context=".AddUser">
 
@@ -14,11 +16,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/scrollcmp"
         android:padding="10dp"
-        android:layout_centerHorizontal="true"
         android:fillViewport="true">
 
     <LinearLayout
         android:padding="30dp"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -26,7 +28,6 @@
         >
 
     <RelativeLayout
-        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -41,16 +42,17 @@
             android:layout_height="50dp"
             android:hint="User Name"
             android:id="@+id/usrname"
-            android:layout_below="@+id/usrcmpny"/>
+            android:layout_below="@+id/name_of_user"/>
 
 
         <TextView
             android:padding="10dp"
+            android:textSize="18dp"
             android:background="@color/gridbg"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:hint="Company Name"
-            android:id="@+id/usrcmpny"
+            android:hint="Name"
+            android:id="@+id/name_of_user"
             />
 
 
@@ -96,11 +98,13 @@
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content">
 
-            <Button
+            <TextView
                 android:layout_margin="10dp"
                 android:background="@drawable/tvborder2"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:textSize="18dp"
+                android:clickable="true"
                 android:id="@+id/user_submit"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
@@ -116,4 +120,4 @@
     </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+</LinearLayout>

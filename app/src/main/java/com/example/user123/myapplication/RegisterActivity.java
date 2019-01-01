@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
 
    private EditText OwnerName,CompName,Address,Email,Contact,UserName,Password;
 
-    Button button;
+    TextView button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

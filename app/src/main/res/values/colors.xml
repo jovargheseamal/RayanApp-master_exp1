@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#bf1e2e</color>
     <color name="colorPrimaryDark">#931623</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#3d4350</color>
     <color name="toolbar">#bf1e2e</color>
     <color name="secondary">#c49a6a</color>
     <color name="grid">#666666</color>
@@ -13,6 +13,9 @@
     <color name="ListBG"> #cbcfd2</color>
     <color name="RecyclerBG"> #f2f2f1</color>
     <color name="LayoutBG"> #f6f6f6</color>
+    <color name="TextHead">#23313e</color>
+    <color name="NotifyText">#00ddff</color>
+
 
 
 

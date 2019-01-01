@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".Dashboard" />
         <activity android:name=".LoginActivity">
@@ -26,17 +28,29 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".AddCompany" />
-        <activity android:name=".RegisterActivity" />
+        <activity
+            android:name=".AddCompany"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+
+
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".OTPCheck" />
-        <activity android:name=".AddEmployee" />
-        <activity android:name=".HomeActivity"></activity>
+        <activity
+            android:name=".AddEmployee"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".Notification" />
         <activity android:name=".Contact" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".NewsFeed" />
-        <activity android:name=".AddUser" />
+        <activity
+            android:name=".AddUser"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -51,8 +65,11 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-        <activity android:name=".ViewCompanyActivity"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".ViewCompanyActivity" />
+        <activity android:name=".SplashScreen">
+        </activity>
+        <activity android:name=".ViewEmployeeActivity"></activity>
     </application>
 
 </manifest>

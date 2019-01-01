@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,12 +28,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView textView;
+    TextView textView,submitlog;
     EditText uname,pword;
     String code,message,usertype;
     ProgressDialog asyncDialog;
 
-    Button button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +41,16 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         textView =findViewById(R.id.reglink);
         uname =(EditText) findViewById(R.id.username);
+        uname.setImeOptions(EditorInfo.IME_ACTION_DONE);
         pword =(EditText) findViewById(R.id.password);
-        button = findViewById(R.id.login);
+        pword.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        submitlog = findViewById(R.id.login);
         asyncDialog = new ProgressDialog(LoginActivity.this);
 
-       button.setOnClickListener(new View.OnClickListener() {
+
+
+
+       submitlog.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                asyncDialog.setTitle("login");

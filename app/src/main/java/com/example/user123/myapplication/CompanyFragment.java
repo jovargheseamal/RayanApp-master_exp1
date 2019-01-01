@@ -26,7 +26,7 @@ public class CompanyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View RootView = inflater.inflate(R.layout.fragment_company, container, false);
+        View RootView = inflater.inflate(R.layout.fragment_company_ed, container, false);
         edit=RootView.findViewById(R.id.editcompany);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override

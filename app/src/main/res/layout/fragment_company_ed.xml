@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@drawable/bggg"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".CompanyFragment"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+         <LinearLayout
+             android:layout_marginTop="20dp"
+             android:id="@+id/edit"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:gravity="end">
+
+             <ImageView
+                 android:clickable="true"
+                 android:id="@+id/editcompany"
+                 android:layout_marginRight="10dp"
+                 android:layout_width="30dp"
+                 android:layout_height="30dp"
+                 android:src="@drawable/edit"/>
+
+         </LinearLayout>
+
+    <!-- TODO: Update blank fragment layout -->
+
+         <TextView
+             android:layout_marginTop="5dp"
+             android:layout_gravity="center"
+             android:padding="10dp"
+             android:id="@+id/compname"
+             android:gravity="center"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textSize="30dp"
+             android:text="Essensol"
+             android:textColor="@android:color/white"
+             android:textStyle="bold"
+
+              />
+<LinearLayout
+    android:layout_marginTop="30dp"
+    android:orientation="vertical"
+    android:layout_gravity="bottom"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/toplayot"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="8dp"
+        >
+
+        <LinearLayout
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/websitelayout"
+            android:layout_below="@+id/contactlayout"
+            >
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:layout_marginTop="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/secondary"
+                android:textStyle="bold"
+                android:text="Contact Person"
+
+                />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center"
+                android:textColor="@color/headerfont"
+                android:text="N/A"
+
+                />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/contactlayout"
+                >
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/secondary"
+                    android:textStyle="bold"
+                    android:text="Trade Licence"
+
+                    />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:gravity="center"
+
+                    android:textColor="@color/headerfont"
+                    android:text="N/A"
+
+                    />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/contactlayout"
+                >
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/secondary"
+                    android:textStyle="bold"
+                    android:text="TRN"
+
+                    />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:gravity="center"
+
+                    android:textColor="@color/headerfont"
+                    android:text="N/A"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/contactlayout"
+                >
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/secondary"
+                    android:textStyle="bold"
+                    android:text="Labour Card Number"
+
+                    />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:gravity="center"
+
+                    android:textColor="@color/headerfont"
+                    android:text="N/A"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/contactlayout"
+                >
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/secondary"
+                    android:textStyle="bold"
+                    android:text="Immigration Card No"
+
+                    />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:gravity="center"
+
+                    android:textColor="@color/headerfont"
+                    android:text="N/A"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/contactlayout"
+                >
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+                    android:textColor="@color/secondary"
+                    android:textStyle="bold"
+                    android:text="Tenancy"
+
+                    />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:textColor="@color/headerfont"
+                    android:text="N/A"
+
+                    />
+
+
+
+
+            </LinearLayout>
+
+
+            <!--Employee and notification grid starts -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical">
+
+                <GridLayout
+                    android:layout_gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:padding="10dp"
+                    android:layout_margin="10dp">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/grid"
+                    >
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        android:textSize="18dp"
+                        android:text="Employees"
+                        />
+
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/NotifyText"
+                        android:textSize="30dp"
+                        android:text="0"
+                        />
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill_horizontal"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        app:cardBackgroundColor="@color/grid"
+                        >
+
+                        <TextView
+                            android:padding="2dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@android:color/white"
+                            android:textSize="18dp"
+                            android:text="Notifications"
+                            android:gravity="center"
+                            />
+
+
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/NotifyText"
+                            android:textSize="30dp"
+                            android:text="0"
+                            />
+
+                    </android.support.v7.widget.CardView>
+                </GridLayout>
+            </LinearLayout>
+
+            <!--Employee and notification grid ends-->
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+     </LinearLayout>
+
+
+</ScrollView>
+

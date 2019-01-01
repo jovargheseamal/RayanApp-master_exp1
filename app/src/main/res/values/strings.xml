@@ -11,6 +11,50 @@
         Angeles-based modern media studio and a division of Psyop Media.
         Angeles-based modern media studio and a division of Psyop Media.
     </string>
+    <string name="sponsorship">The government of UAE has allowed to start limited liability companies (LLC),
+    Service agent, sole establishments of foreign branches /
+    civil companies only with partnership of an Emirati citizen or UAE national.
+    We arrange sponsorship from highly trusted UAE national with responsibility. </string>
+
+    <string name="services">We provide exclusive PRO services in Ajman on an annualized basis or on a project basis.
+        This is a specialized service from companies want to hire service for labour,
+        immigration,family visa services, economic and municipality department affairs.
+        By hiring our service companies can save money, time as well as manpower.
+        By choosing our service you can save the expense of employing a full time PRO.</string>
+
+    <string name="legaldocument">Our area of responsibility include translation and
+        clearing of legal documents accurately with high efficiency.
+        We provide services for online document clearing which include immigration department,
+        labour, economic, municipality, chamber of commerce, ministry on interior, ministry of finance,
+        traffic department, transport department, ministry of health, media council, federal electricity and water authority,
+        ministry of justice (court). We do provide legal translation with high efficiency.</string>
+
+
+    <string name="labour">Employers will have to give the ministry of labour and
+        social affairs a sum of Dh3000 as bank guarantee for every new employee they hire.
+        We provide the service to pay bank guarantee in a way that can save your time
+        and return of the same at the time of cancellation of the employee.</string>
+    <string name="family">We provide full-fledged services for family visa processing in UAE with minimum effort
+        from your side and allows you to welcome your family to UAE in an easy and pleasant way.
+        We can act completely on behalf of you to carry out all your requirements and serve your family visas in UAE.
+        To prepare all the required documents
+        for a new family visa application till you finish the visa stamping for your dependents in UAE.</string>
+
+    <string name="account">Accurate bookkeeping is indispensable to unceasing a fighting fit, steady, developing business.
+        While seemingly a simple and menial task, recording all the financial transactions of a company is a central aspect
+        of the corporate accounting process.
+        Our accounting team is well endowed with vat amenable accounting and bookkeeping services.</string>
+
+    <string name="Address">
+        Jurf 2,
+        Ajman,
+        UAE
+
+    </string>
+
+
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

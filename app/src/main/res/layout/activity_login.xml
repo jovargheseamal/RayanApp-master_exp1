@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +16,6 @@
 
         android:gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:background="@color/toolbar"
         android:elevation="6dp"
         android:minHeight="50dp"
@@ -36,12 +37,39 @@
     </android.support.v7.widget.Toolbar>
 
 
+<LinearLayout
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+        <ImageView
+
+            android:id="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo"/>
+    </RelativeLayout>
+
+
+
+
+
+
 
 
 
     <RelativeLayout
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/logintxt"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -50,7 +78,9 @@
 
 
 
+
         <EditText
+            android:focusableInTouchMode="true"
             android:layout_marginTop="20dp"
             android:layout_width="300dp"
             android:layout_height="50dp"
@@ -60,12 +90,14 @@
             android:background="@color/gridbg"
             />
         <EditText
+            android:imeOptions="actionDone"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:padding="10dp"
             android:layout_marginTop="20dp"
             android:layout_below="@+id/username"
             android:id="@+id/password"
+            android:inputType="textPassword"
             android:hint="Password"
             android:background="@color/gridbg"/>
         <RelativeLayout
@@ -75,10 +107,13 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/lay2">
 
-            <Button
+            <TextView
+                android:clickable="true"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:text="Login"
+                android:textSize="20dp"
+                android:gravity="center"
                 android:textColor="@android:color/white"
                 android:background="@drawable/tvborder2"
                 android:id="@+id/login"
@@ -86,22 +121,50 @@
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/reglink"
-            android:clickable="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Register"
-            android:textSize="20dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/lay2"/>
+
+
 
 
 
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:padding="30dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
-</RelativeLayout>
+        <TextView
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account?"
+            android:textSize="15dp"
+            />
+
+
+        <TextView
+            android:id="@+id/reglink"
+            android:clickable="true"
+            android:textStyle="bold|italic"
+
+            android:layout_weight="1"
+            android:textColor="@color/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register here"
+            android:textSize="15dp"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+</LinearLayout>

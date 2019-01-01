@@ -49,6 +49,7 @@
 
 
                     <EditText
+                        android:focusableInTouchMode="true"
                         android:layout_marginTop="8dp"
                         android:padding="10dp"
                         android:layout_width="match_parent"
@@ -301,7 +302,7 @@
                         android:padding="10dp"
                         android:background="@color/gridbg"
                         android:layout_marginTop="8dp"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:hint="Email"
                         />
@@ -330,7 +331,7 @@
                         android:padding="10dp"
                         android:background="@color/gridbg"
                         android:layout_marginTop="8dp"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:hint="Emirates ID"
                        />
@@ -360,7 +361,7 @@
                     <EditText
                         android:padding="10dp"
                         android:layout_marginTop="8dp"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:hint="Passport No"
                         android:background="@color/gridbg"
@@ -475,7 +476,7 @@
                         android:padding="10dp"
                         android:layout_marginTop="8dp"
                         android:background="@color/gridbg"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:hint="Work Permit"
                        />
@@ -671,7 +672,7 @@
                         android:padding="10dp"
                         android:layout_marginTop="8dp"
                         android:background="@color/gridbg"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:hint="UID No"
                         />
@@ -700,7 +701,7 @@
                     <EditText
                         android:padding="10dp"
                         android:layout_marginTop="8dp"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:background="@color/gridbg"
                         android:layout_height="40dp"
                         android:hint="File Number"
@@ -720,12 +721,14 @@
                     android:layout_centerHorizontal="true"
                     android:layout_height="wrap_content">
 
-                    <Button
+                    <TextView
                         android:layout_margin="10dp"
                         android:layout_width="200dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
+                        android:clickable="true"
                         android:id="@+id/sbmt"
                         android:text="Submit"
+                        android:textSize="18dp"
                         android:textStyle="bold"
                         android:background="@drawable/tvborder2"
                         android:textColor="@android:color/white"
