@@ -40,10 +40,13 @@
         To prepare all the required documents
         for a new family visa application till you finish the visa stamping for your dependents in UAE.</string>
 
-    <string name="account">Accurate bookkeeping is indispensable to unceasing a fighting fit, steady, developing business.
+    <string name="account">
+        <html><body style="text-align:justify">Accurate bookkeeping is indispensable to unceasing a fighting fit, steady, developing business.
         While seemingly a simple and menial task, recording all the financial transactions of a company is a central aspect
         of the corporate accounting process.
-        Our accounting team is well endowed with vat amenable accounting and bookkeeping services.</string>
+        Our accounting team is well endowed with vat amenable accounting and bookkeeping services.</body>
+        </html>
+    </string>
 
     <string name="Address">
         Jurf 2,
@@ -51,8 +54,6 @@
         UAE
 
     </string>
-
-
 
 
 

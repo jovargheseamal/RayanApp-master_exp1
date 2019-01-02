@@ -1,5 +1,6 @@
 package com.example.user123.myapplication;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationMenu;
 import android.support.design.widget.BottomNavigationView;
@@ -10,13 +11,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 public class MainActivity extends BaseActivity {
 
-
+    String OwnerID,userType;
     TextView tvAppName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,21 @@ public class MainActivity extends BaseActivity {
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.activity_main, contentFrameLayout);
 
+        SharedPreferences keys =getSharedPreferences("MyPref",MODE_PRIVATE);
+        OwnerID =keys.getString("OwnerID",null);
+        userType =keys.getString("UserType",null);
+
         BottomNavigationView navigationMenu =(BottomNavigationView) findViewById(R.id.navigation);
+
+        if(userType.equals("PRO")) {
+
+            Menu menu = navigationMenu.getMenu();
+
+            MenuItem target = menu.findItem(R.id.users);
+
+            target.setVisible(false);
+        }
+
         final CompanyFragment companyFragment = new CompanyFragment();
         final UserFragment userFragment = new UserFragment();
         final EmployeeFragment employeeFragment=new EmployeeFragment();

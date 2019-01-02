@@ -2,6 +2,7 @@ package com.example.user123.myapplication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +31,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     TextView textView,submitlog;
     EditText uname,pword;
-    String code,message,usertype;
+    String code,message,usertype,ownerId;
     ProgressDialog asyncDialog;
 
 
@@ -95,6 +96,13 @@ public class LoginActivity extends AppCompatActivity {
                             code= jsonObject.getString("responseCode");
                             message=jsonObject.getString("responseMessage");
                             usertype=jsonObject.getString("userType");
+                            ownerId=jsonObject.getString("OwnerID");
+                            SharedPreferences sp =getSharedPreferences("MyPref",MODE_PRIVATE);
+                            SharedPreferences.Editor editor =sp.edit();
+                            editor.putString("OwnerID",ownerId);
+                            editor.putString("UserType",usertype);
+                            editor.apply();
+
                             Log.e("uttutut", "" + code);
 
                             if (code.equals("0")) {

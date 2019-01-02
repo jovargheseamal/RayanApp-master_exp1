@@ -126,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("OwnerName",OwnerName.getText().toString());
+                param.put("CompanyName",CompName.getText().toString());
                 param.put( "Address", Address.getText().toString());
                 param.put("ContactNo",Contact.getText().toString());
                 param.put("EmailId", Email.getText().toString());

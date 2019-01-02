@@ -447,6 +447,8 @@
                             android:layout_height="35dp" />
 
                         <TextView
+                            android:textAlignment="center"
+                            android:id="@+id/webview1"
                             android:layout_gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -498,8 +500,8 @@
                             android:layout_height="35dp" />
 
                         <TextView
-
-                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="9dp"
@@ -554,6 +556,7 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:textAlignment="center"
                                 android:layout_gravity="center"
 
                                 android:layout_width="match_parent"
@@ -610,7 +613,8 @@
                             android:layout_below="@+id/legaltxt">
 
                             <TextView
-                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:gravity="fill"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textSize="9dp"
@@ -659,6 +663,7 @@
                             android:layout_height="35dp" />
 
                         <TextView
+                            android:textAlignment="center"
                             android:layout_gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -704,6 +709,7 @@
                             android:layout_height="35dp" />
 
                         <TextView
+                            android:textAlignment="center"
                             android:layout_gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
