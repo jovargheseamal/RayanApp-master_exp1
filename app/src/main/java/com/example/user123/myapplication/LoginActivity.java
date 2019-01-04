@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText uname,pword;
     String code,message,usertype,ownerId;
     ProgressDialog asyncDialog;
-
+    SharedPreferences sp;
 
 
     @Override
@@ -51,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+
        submitlog.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -58,7 +60,27 @@ public class LoginActivity extends AppCompatActivity {
                asyncDialog.setMessage("Please Wait...");
                //show dialog
                asyncDialog.show();
-               Login();
+
+               if ((uname.getText().toString().equalsIgnoreCase("")) || (pword.getText().toString().equalsIgnoreCase("")))
+               {   asyncDialog.dismiss();
+                   uname.setError("Field is Mandatory",getResources().getDrawable(R.drawable.erroricon));
+                   pword.setError("Field is Mandatory",getResources().getDrawable(R.drawable.erroricon));
+
+
+
+
+               }
+            else {
+                   asyncDialog.show();
+
+                   Log.e("testttttt","inside elseeeeeeee");
+                   Login();
+               }
+
+
+
+
+
 
            }
        });
@@ -96,16 +118,19 @@ public class LoginActivity extends AppCompatActivity {
                             code= jsonObject.getString("responseCode");
                             message=jsonObject.getString("responseMessage");
                             usertype=jsonObject.getString("userType");
-                            ownerId=jsonObject.getString("OwnerID");
-                            SharedPreferences sp =getSharedPreferences("MyPref",MODE_PRIVATE);
-                            SharedPreferences.Editor editor =sp.edit();
-                            editor.putString("OwnerID",ownerId);
-                            editor.putString("UserType",usertype);
-                            editor.apply();
+                            ownerId=jsonObject.getString("ownerId");
+
 
                             Log.e("uttutut", "" + code);
 
                             if (code.equals("0")) {
+
+                                 sp =getSharedPreferences("MyPref",MODE_PRIVATE);
+                                SharedPreferences.Editor editor =sp.edit();
+                                editor.putString("OwnerID",ownerId);
+                                editor.putString("UserType",usertype);
+                                editor.apply();
+
                                 Intent intent =new Intent(LoginActivity.this,HomeActivity.class);
                                 startActivity(intent);
                                 Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_LONG).show();

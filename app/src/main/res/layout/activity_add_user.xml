@@ -45,7 +45,8 @@
             android:layout_below="@+id/name_of_user"/>
 
 
-        <TextView
+        <EditText
+
             android:padding="10dp"
             android:textSize="18dp"
             android:background="@color/gridbg"

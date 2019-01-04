@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -27,8 +29,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddUser extends BaseActivity {
-    TextView txtuser;
-    EditText FullName,UserName,Contact,Password;
+    TextView txtuser,useSbmit;
+    EditText FullName,UserName,Contact,Password,CPassword;
     ProgressDialog asyncDialog;
     String Code,Message;
 
@@ -43,6 +45,112 @@ public class AddUser extends BaseActivity {
         txtuser=(TextView)tb.findViewById(R.id.appname);
         txtuser.setText("New User");
         asyncDialog = new ProgressDialog(AddUser.this);
+        useSbmit =findViewById(R.id.user_submit);
+        UserName=findViewById(R.id.usrname);
+        Contact=findViewById(R.id.usr_contact_no);
+        Password=findViewById(R.id.user_pwrd);
+        CPassword=findViewById(R.id.cpwrd);
+        FullName=findViewById(R.id.name_of_user);
+        asyncDialog = new ProgressDialog(this);
+
+
+
+
+
+        FullName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View arg0, final boolean hasfocus) {
+                if (hasfocus) {
+
+                    FullName.setError("Mandatory Field");
+                }
+                else {
+                    FullName.clearFocus();
+                }
+            }
+        });
+
+        UserName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View arg0, final boolean hasfocus) {
+                if (hasfocus) {
+
+                    UserName.setError("Mandatory Field");
+                }
+                else {
+                    UserName.clearFocus();
+
+
+                }
+            }
+        });
+
+        Password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View arg0, final boolean hasfocus) {
+                if (hasfocus) {
+
+                    Password.setError("Mandatory Field");
+                }
+                else {
+                    Password.clearFocus();
+
+
+                }
+            }
+        });
+
+
+
+
+
+        useSbmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                asyncDialog.setTitle("User Registration");
+                asyncDialog.setMessage("On Progress....");
+                asyncDialog.show();
+
+                if (TextUtils.isEmpty(FullName.getText()))
+                {
+                    asyncDialog.dismiss();
+                   FullName.setError("Field is Mandatory");
+
+                }
+                else if(TextUtils.isEmpty(UserName.getText())){
+
+                    asyncDialog.dismiss();
+                    UserName.setError("Field is Mandatory");
+
+
+                }
+                else if(TextUtils.isEmpty(Password.getText())){
+
+                    asyncDialog.dismiss();
+                    Password.setError("Field is Mandatory");
+
+
+                }
+
+                else if(!Password.getText().toString().equals(CPassword.getText().toString())){
+
+                    asyncDialog.dismiss();
+                    CPassword.setError("Not Matching");
+
+
+                }
+
+                else
+                {
+                    asyncDialog.show();
+                    UserRegister();
+                }
+
+
+            }
+        });
 
 
 
@@ -80,7 +188,7 @@ public class AddUser extends BaseActivity {
                             Log.e("uttutut", "" + Code);
 
                             if (Code.equals("0")) {
-                                Intent intent = new Intent(AddUser.this, LoginActivity.class);
+                                Intent intent = new Intent(AddUser.this, UserFragment.class);
                                 startActivity(intent);
                                 Toast.makeText(AddUser.this, "User Registered", Toast.LENGTH_LONG).show();
                             } else {
@@ -115,7 +223,6 @@ public class AddUser extends BaseActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("OwnerName",FullName.getText().toString());
-                param.put( "Address", "");
                 param.put("ContactNo",Contact.getText().toString());
                 param.put("UserName", UserName.getText().toString());
                 param.put("Password", Password.getText().toString());

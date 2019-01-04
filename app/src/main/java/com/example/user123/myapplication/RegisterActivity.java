@@ -1,13 +1,16 @@
 package com.example.user123.myapplication;
 
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +38,9 @@ public class RegisterActivity extends AppCompatActivity {
    private EditText OwnerName,CompName,Address,Email,Contact,UserName,Password;
 
     TextView button;
+    ScrollView scrollView;
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,100 @@ public class RegisterActivity extends AppCompatActivity {
         UserName=(EditText)findViewById(R.id.uname);
         Password=(EditText)findViewById(R.id.paswd);
          asyncDialog = new ProgressDialog(RegisterActivity.this);
+
+        scrollView=findViewById(R.id.scrollcmp);
+
+
+
+
+        OwnerName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View arg0, final boolean hasfocus) {
+                if (hasfocus) {
+
+                    OwnerName.setError("Mandatory Field");
+
+                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                        @Override
+                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+                            OwnerName.clearFocus();
+
+                        }
+                    });
+
+                }
+            }
+        });
+
+
+        CompName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View arg0, final boolean hasfocus) {
+                if (hasfocus) {
+
+                    CompName.setError("Mandatory Field");
+
+                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                        @Override
+                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+                            CompName.clearFocus();
+
+                        }
+                    });
+
+                }
+            }
+        });
+
+
+
+
+
+        UserName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View arg0, final boolean hasfocus) {
+                if (hasfocus) {
+
+                    UserName.setError("Mandatory Field");
+
+                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                        @Override
+                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+                            UserName.clearFocus();
+
+                        }
+                    });
+
+                }
+            }
+        });
+
+
+        Password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View arg0, final boolean hasfocus) {
+                if (hasfocus) {
+
+                    Password.setError("Mandatory Field");
+
+                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                        @Override
+                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+                            Password.clearFocus();
+
+                        }
+                    });
+
+                }
+            }
+        });
+
+
+
 
         button = findViewById(R.id.regbtn);
         button.setOnClickListener(new View.OnClickListener() {
