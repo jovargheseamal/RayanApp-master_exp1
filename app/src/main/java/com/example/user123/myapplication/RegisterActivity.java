@@ -167,7 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-        String URL = "http://192.168.0.30:7777/Service1.svc/adminRegister";
+        String URL = "http://192.168.0.30:5544/api/userapi/adminRegister";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -183,7 +183,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             Log.e("uttutut", "" + response);
                             JSONObject object     = new JSONObject(response);
-                            JSONArray jsonArray   = object.getJSONArray("SaveAdminUserResult");
+                            JSONArray jsonArray   = object.getJSONArray("RegisterResponse");
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
                             code= jsonObject.getString("responseCode");
                             message=jsonObject.getString("responseMessage");

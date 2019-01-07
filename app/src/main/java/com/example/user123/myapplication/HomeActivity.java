@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
@@ -37,7 +38,10 @@ public class HomeActivity extends BaseActivity implements OnMapReadyCallback {
         getLayoutInflater().inflate(R.layout.activity_home_edit, contentFrameLayout);
 
 
+        SharedPreferences keys =getSharedPreferences("MyPref",MODE_PRIVATE);
+        ownerID =keys.getString("OwnerID",null);
 
+        Log.e("cominggggggg","fdfdfdfdf"+ownerID);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -72,6 +76,7 @@ public class HomeActivity extends BaseActivity implements OnMapReadyCallback {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ViewCompanyActivity.class);
                 startActivity(intent);
+
             }
         });
 
@@ -115,10 +120,13 @@ public class HomeActivity extends BaseActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMapType(googleMap.MAP_TYPE_HYBRID);
 
         // Add a marker in Sydney and move the camera
         LatLng Rayan = new LatLng(25.432085,55.532238);
         mMap.addMarker(new MarkerOptions().position(Rayan).title("Rayan"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Rayan));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Rayan,12));
+
     }
 }

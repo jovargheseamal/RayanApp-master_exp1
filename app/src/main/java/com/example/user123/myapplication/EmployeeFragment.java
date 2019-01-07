@@ -17,7 +17,7 @@ public class EmployeeFragment extends Fragment {
 
 
 
-
+String CompID,cname;
 
 
     public EmployeeFragment() {
@@ -29,12 +29,18 @@ public class EmployeeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View RootView = inflater.inflate(R.layout.fragment_employee, container, false);
+        Bundle bundle =this.getArguments();
+        CompID=bundle.getString("CompanyID");
+        cname= bundle.getString("CompanyName");
+
         FloatingActionButton fab = RootView.findViewById(R.id.fab2);
 
        fab.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),AddEmployee.class);
+                intent.putExtra("CompanyID",CompID);
+                intent.putExtra("CompanyName",cname);
               startActivity(intent);
            }
        });

@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         textView =findViewById(R.id.reglink);
         uname =(EditText) findViewById(R.id.username);
         uname.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        pword =(EditText) findViewById(R.id.password);
+        pword =(EditText) findViewById(R.id.pasword);
         pword.setImeOptions(EditorInfo.IME_ACTION_DONE);
         submitlog = findViewById(R.id.login);
         asyncDialog = new ProgressDialog(LoginActivity.this);
@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        String URL = "http://192.168.0.30:7777/Service1.svc/login";
+        String URL = "http://192.168.0.30:5544/api/userapi/login";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -113,19 +113,21 @@ public class LoginActivity extends AppCompatActivity {
 
                             Log.e("uttutut", "" + response);
                             JSONObject object     = new JSONObject(response);
-                            JSONArray jsonArray   = object.getJSONArray("LoginResult");
+                            JSONArray jsonArray   = object.getJSONArray("LoginResponse");
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
                             code= jsonObject.getString("responseCode");
                             message=jsonObject.getString("responseMessage");
-                            usertype=jsonObject.getString("userType");
-                            ownerId=jsonObject.getString("ownerId");
+
 
 
                             Log.e("uttutut", "" + code);
 
                             if (code.equals("0")) {
 
-                                 sp =getSharedPreferences("MyPref",MODE_PRIVATE);
+                                usertype=jsonObject.getString("userType");
+                                ownerId=jsonObject.getString("ownerId");
+
+                                sp =getSharedPreferences("MyPref",MODE_PRIVATE);
                                 SharedPreferences.Editor editor =sp.edit();
                                 editor.putString("OwnerID",ownerId);
                                 editor.putString("UserType",usertype);
@@ -133,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 Intent intent =new Intent(LoginActivity.this,HomeActivity.class);
                                 startActivity(intent);
+                                finish();
                                 Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                             } else {
 

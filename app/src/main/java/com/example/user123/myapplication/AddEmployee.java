@@ -32,13 +32,13 @@ import java.util.Map;
 
 public class AddEmployee extends BaseActivity {
 
-    TextView txtempl,SubmitEmp;
+    TextView txtempl,SubmitEmp,CompName;
 
-    String Bday,bmnth,byr,pday,pmnth,pyear,wpday,wpmnth,wpyear,vday,vmonth,vyear;
+    String Bday,bmnth,byr,pday,pmnth,pyear,wpday,wpmnth,wpyear,vday,vmonth,vyear,compID,cname;
 
     ProgressDialog asyncDialog;
 
-    EditText CompName,EmpName,Address,Contact,Email,EMID,PassportNO,WorkPermit,UIDno,FileNo;
+    EditText EmpName,Address,Contact,Email,EMID,PassportNO,WorkPermit,UIDno,FileNo;
 
     String array_day[] = {"DD", "1", "2", "3", "4", "5", "6","7","8","9","10",
             "11", "12", "13", "14", "15", "16","17","18","19","20","21", "22", "23", "24", "25", "26","27","28","29","30",
@@ -66,6 +66,12 @@ public class AddEmployee extends BaseActivity {
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.activity_add_employee_ed, contentFrameLayout);
 
+        Bundle abBundle= getIntent().getExtras();
+        compID = abBundle.getString("CompanyID");
+        cname = abBundle.getString("CompanyName");
+
+        Log.e("uttutut", "" + cname);
+
 
   ///spinner intialization//////////
 
@@ -92,6 +98,7 @@ public class AddEmployee extends BaseActivity {
      ////////////////
 
         CompName = findViewById(R.id.emp_comp);
+        CompName.setText(cname);
         EmpName = findViewById(R.id.emp_name);
         Address = findViewById(R.id.empAddress);
         Contact = findViewById(R.id.empPh);
@@ -101,7 +108,7 @@ public class AddEmployee extends BaseActivity {
         WorkPermit = findViewById(R.id.EMPWorkPermit);
         UIDno = findViewById(R.id.UIDno);
         FileNo = findViewById(R.id.FileNo);
-        SubmitEmp =findViewById(R.id.emp_submit);
+        SubmitEmp =findViewById(R.id.sbmtEMP);
 
 
         ///day////////
@@ -341,7 +348,7 @@ public class AddEmployee extends BaseActivity {
 
 
 
-        String URL = "http://192.168.0.30:7777/Service1.svc/employeeRegister";
+        String URL = "http://192.168.0.30:5544/api/EmployeeApi/SaveEmployee";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -398,12 +405,12 @@ public class AddEmployee extends BaseActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
                 // param.put("OwnerName","");
-                param.put("EmpID","1");
-                param.put("CompID","");
+
+                param.put("CompId",compID);
                 param.put("EmpName",EmpName.getText().toString());
                 param.put("Address",Address.getText().toString());
                 param.put("PhoneNo",Contact.getText().toString());
-                param.put("DOB",bday+"-"+bmnth+"-"+byr);
+                param.put("DOB",Bday+"-"+bmnth+"-"+byr);
                 param.put("EmailID",Email.getText().toString());
                 param.put("EmiratesID",EMID.getText().toString());
                 param.put("PassportNO",PassportNO.getText().toString());

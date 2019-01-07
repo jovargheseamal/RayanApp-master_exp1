@@ -170,10 +170,12 @@
                     android:hint="File Number"
                     android:id="@+id/emp_file_no"/>
 
-                <EditText
+                <TextView
                     android:padding="10dp"
                     android:layout_width="300dp"
                     android:background="@color/gridbg"
+                    android:textSize="20dp"
+                    android:gravity="center"
                     android:layout_height="50dp"
                     android:hint="Company Name"
                     android:id="@+id/emp_comp_name"/>

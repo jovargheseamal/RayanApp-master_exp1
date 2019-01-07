@@ -2,12 +2,14 @@ package com.example.user123.myapplication;
 
 public class CompanyModelClass {
 
- private String CompID,OwnerID,CompanyName,ContactPerson,ContactNo,TradeLicence,TradeLicenceExpiry,TRN,LabourCardNumber,ImmigrationCardNumber,ImmigrationCardNumberExpiry,Tenancy;
+ private String ownerName, employeeCount,CompID,CompanyName,ContactPerson,ContactNo,TradeLicence,TradeLicenceExpiry,TRN,LabourCardNumber,ImmigrationCardNumber,ImmigrationCardNumberExpiry,Tenancy;
 
-    public CompanyModelClass(String compID, String ownerID, String companyName, String contactPerson, String contactNo, String tradeLicence, String tradeLicenceExpiry, String TRN, String labourCardNumber, String immigrationCardNumber, String immigrationCardNumberExpiry, String tenancy)
+
+
+    public CompanyModelClass(String compID,String ownerName,  String companyName, String contactPerson, String contactNo, String tradeLicence, String tradeLicenceExpiry, String TRN, String labourCardNumber, String immigrationCardNumber, String immigrationCardNumberExpiry, String tenancy,String employeeCount)
     {
         this.CompID = compID;
-        this.OwnerID = ownerID;
+        this.ownerName = ownerName;
         this.CompanyName = companyName;
         this. ContactPerson = contactPerson;
         this. ContactNo = contactNo;
@@ -18,6 +20,7 @@ public class CompanyModelClass {
         this.ImmigrationCardNumber = immigrationCardNumber;
         this.ImmigrationCardNumberExpiry = immigrationCardNumberExpiry;
         this.Tenancy = tenancy;
+        this.employeeCount = employeeCount;
     }
 
     public String getCompID() {
@@ -28,13 +31,13 @@ public class CompanyModelClass {
         CompID = compID;
     }
 
-    public String getOwnerID() {
-        return OwnerID;
-    }
-
-    public void setOwnerID(String ownerID) {
-        OwnerID = ownerID;
-    }
+//    public String getOwnerID() {
+//        return OwnerID;
+//    }
+//
+//    public void setOwnerID(String ownerID) {
+//        OwnerID = ownerID;
+//    }
 
     public String getCompanyName() {
         return CompanyName;
@@ -108,11 +111,29 @@ public class CompanyModelClass {
         ImmigrationCardNumberExpiry = immigrationCardNumberExpiry;
     }
 
+    public String getEmployeeCount() {
+        return employeeCount;
+    }
+
+    public void setEmployeeCount(String employeeCount) {
+        this.employeeCount = employeeCount;
+    }
+
     public String getTenancy() {
         return Tenancy;
     }
 
+
+
     public void setTenancy(String tenancy) {
         Tenancy = tenancy;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 }

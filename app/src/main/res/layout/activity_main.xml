@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    >
 
 
     <android.support.design.widget.CoordinatorLayout
@@ -17,28 +17,39 @@
         >
 
      <RelativeLayout
-         android:layout_width="wrap_content"
+         android:layout_width="match_parent"
          android:layout_height="wrap_content">
 
 
-    <FrameLayout android:layout_above="@+id/navigation"
+    <FrameLayout android:layout_above="@+id/navigation1"
             android:id="@+id/frame_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+         <LinearLayout
+             android:id="@+id/navigation1"
+
+             android:background="@color/secondary"
+             android:layout_alignParentBottom="true"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+
         <android.support.design.widget.BottomNavigationView
-            android:id="@+id/navigation"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:id="@+id/navigation"
+
             android:layout_gravity="bottom"
-            android:background="?android:attr/windowBackground"
+            android:background="@color/secondary"
             app:itemBackground="@color/secondary"
             android:foreground="?attr/selectableItemBackground"
             app:itemIconTint="@color/background_color"
             app:itemTextColor="@color/background_color"
             app:menu="@menu/navigation" />
+
+        </LinearLayout>
 
      </RelativeLayout>
 

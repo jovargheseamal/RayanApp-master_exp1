@@ -2,6 +2,7 @@ package com.example.user123.myapplication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteCursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,8 +37,8 @@ public class AddCompany extends BaseActivity {
 
     TextView txtxmpny,register;
     ProgressDialog asyncDialog;
-    String TRN_Exp_Day,TRN_Exp_Month,TRN_Exp_Year,IMC_Exp_Day,IMC_Exp_Month,IMC_Exp_Year,code,message;
-
+    String TRN_Exp_Day,TRN_Exp_Month,TRN_Exp_Year,IMC_Exp_Day,IMC_Exp_Month,IMC_Exp_Year,code,message,OwnerID,Toolbar,companyID,Mode;
+    String compname,cp,Tl,Trn,Lcn,Icn,tenancy;
 
     String array_day[] = {"DD", "1", "2", "3", "4", "5", "6","7","8","9","10",
             "11", "12", "13", "14", "15", "16","17","18","19","20","21", "22",
@@ -60,11 +61,24 @@ public class AddCompany extends BaseActivity {
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.activity_add_company_ed, contentFrameLayout);
 
+
+        SharedPreferences keys =getSharedPreferences("MyPref",MODE_PRIVATE);
+        OwnerID =keys.getString("OwnerID",null);
+
+        Bundle abBundle= getIntent().getExtras();
+        Toolbar =abBundle.getString("ToolText");
+        companyID=abBundle.getString("CompID");
+       // Mode=Toolbar.
+
+        if (Toolbar.equalsIgnoreCase("Edit Company")) {
+            EditUser();
+        }
 // toolbar
 
         Toolbar tb=getToolBar();
         txtxmpny=(TextView)tb.findViewById(R.id.appname);
-        txtxmpny.setText("New Company");
+        txtxmpny.setText(Toolbar);
+
 
         //spinners
         register=findViewById(R.id.sbmt);
@@ -208,7 +222,7 @@ public class AddCompany extends BaseActivity {
                 //show dialog
                 asyncDialog.show();
 
-                UserRegister();
+                CompanyRegister();
             }
         });
 
@@ -220,11 +234,11 @@ public class AddCompany extends BaseActivity {
 
 
 
-    public void UserRegister() {
+    public void CompanyRegister() {
 
 
 
-        String URL = "http://192.168.0.30:7777/Service1.svc/companyRegister";
+        String URL = "http://192.168.0.30:5544/api/Companyapi/AddEditCompany";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -233,7 +247,7 @@ public class AddCompany extends BaseActivity {
                     public void onResponse(String response) {
                         asyncDialog.dismiss();
 
-                        Log.e("uttutut", "" + response);
+                        Log.e("addedittttt", "" + response);
 
 
                         try {
@@ -247,7 +261,7 @@ public class AddCompany extends BaseActivity {
                             Log.e("uttutut", "" + code);
 
                             if (code.equals("0")) {
-                                Intent intent = new Intent(AddCompany.this, LoginActivity.class);
+                                Intent intent = new Intent(AddCompany.this, ViewCompanyActivity.class);
                                 startActivity(intent);
                                 Toast.makeText(AddCompany.this, "Registration Success", Toast.LENGTH_LONG).show();
                             } else {
@@ -272,7 +286,7 @@ public class AddCompany extends BaseActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         asyncDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                       Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
 
                     }
                 })
@@ -282,7 +296,8 @@ public class AddCompany extends BaseActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
                // param.put("OwnerName","");
-                param.put("OwnerID","1");
+                param.put("CompId",companyID);
+                param.put("OwnerID",OwnerID);
                 param.put("CompanyName",CMP_Name.getText().toString());
                 param.put("ContactPerson",ContactPerson.getText().toString());
                 param.put("ContactNo","rturturtur");
@@ -293,8 +308,9 @@ public class AddCompany extends BaseActivity {
                 param.put("ImmigrationCardNumber",Immigration.getText().toString());
                 param.put("ImmigrationCardExpiry",IMC_Exp_Day+"-"+IMC_Exp_Month+"-"+IMC_Exp_Year);
                 param.put("Tenancy",Tenancy.getText().toString());
+                param.put("Mode", Toolbar.substring(0,1));
 
-                Log.e("params",""+param);
+                Log.e("params",""+Toolbar.substring(0,1));
                 return param;
 
 
@@ -322,6 +338,122 @@ public class AddCompany extends BaseActivity {
     }
 
 
+    public  void EditUser() {
+
+
+        String URL = "http://192.168.0.30:5544/api/Companyapi/GetCompById";
+
+
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Log.e("Jsonnnn",""+response);
+                        //asyncDialog.dismiss();
+                        if((!response.equals("[]"))&&(!response.equals("null"))) {
+                            try {
+
+                                JSONObject o     = new JSONObject(response);
+                                JSONArray json_array   = o.getJSONArray("CompanyDetails");
+
+
+//                                try {
+//                                    jsonarray = response.getJSONArray("Table1");
+//                                    jsonarray1 = object.getJSONArray("Table1");
+//
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
+
+                           /* JSONObject json_object =new JSONObject(response);
+                            JSONArray json_array=json_object.getJSONArray(response);*/
+//                                JSONArray json_array = new JSONArray(response);
+                                int j;
+                                for (j = 0; j < json_array.length(); j++) {
+                                    o = json_array.getJSONObject(j);
+                                    compname=o.getString("compName");
+                                     cp = o.getString("contactPerson");
+                                     Tl = o.getString("tradeLicence");
+                                     Trn = o.getString("trn");
+                                     Lcn= o.getString("labourCardNumber");
+                                    Icn= o.getString("immigrationCardNumber");
+                                    tenancy= o.getString("tenancy");
+
+//                                            o.getString("contactNo"),
+//                                            o.getString("tradeLicenceExpiry"),o.getString("trn"),
+//                                           ,,
+//                                            o.getString("immigrationCardExpiry"),,o.getString("employeeCount");
+
+
+                                    //compname,cp,Tl,Trn,Lcn,Icn,tenancy
+
+                                }
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            CMP_Name.setText(compname);
+                            ContactPerson.setText(cp);
+                            TradeLicence.setText(Tl);
+                            TRN.setText(Trn);
+                            LabourCard.setText(Lcn);
+                            Immigration.setText(Icn);
+                            Tenancy.setText(tenancy);
+
+
+
+                            //CMP_Name,ContactPerson,TradeLicence,TRN,LabourCard,Immigration,Tenancy;
+
+                        }
+                        else
+                        {
+                            Toast.makeText(AddCompany.this,"No Company to Display",Toast.LENGTH_LONG).show();
+                        }
+
+
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                       // asyncDialog.dismiss();
+                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("CompId", companyID);
+
+
+
+                Log.e("iddddddd",""+companyID);
+
+                return param;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> param = new HashMap<String, String>();
+                param.put("Content-Type","application/x-www-form-urlencoded");
+                return param;
+            }
+        }
+                ;
+
+        // Volley.getInstance(this).addToRequestQueue(stringRequest);
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+
+
+    }
 
 
 }

@@ -53,7 +53,7 @@ public class BaseActivity extends AppCompatActivity {
                         break;
 
                     case R.id.Comp:
-                        intent = new Intent(BaseActivity.this, MainActivity.class);
+                        intent = new Intent(BaseActivity.this, ViewCompanyActivity.class);
                         startActivity(intent);
                         drawerLayout.closeDrawers();
                         break;

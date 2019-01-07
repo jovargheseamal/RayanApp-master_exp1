@@ -26,6 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,11 +47,12 @@ public class ViewCompanyActivity extends BaseActivity  {
 
 
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame); //Remember this is the FrameLayout area within your activity_main.xml
-        getLayoutInflater().inflate(R.layout.companylist, contentFrameLayout);
+        getLayoutInflater().inflate(R.layout.activity_view_company, contentFrameLayout);
 
         CardView linearLayout =findViewById(R.id.list);
 
         floatbttn = (FloatingActionButton) findViewById(R.id.fab3);
+        Complist = new ArrayList<>();
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
@@ -59,6 +61,8 @@ public class ViewCompanyActivity extends BaseActivity  {
         SharedPreferences keys =getSharedPreferences("MyPref",MODE_PRIVATE);
         OwnerID =keys.getString("OwnerID",null);
         userType =keys.getString("UserType",null);
+
+        loadrecyclerviewdata();
 
         assert userType != null;
         if (userType.equals("PRO")) {
@@ -74,6 +78,7 @@ public class ViewCompanyActivity extends BaseActivity  {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ViewCompanyActivity.this, AddCompany.class);
+                intent.putExtra("ToolText","New Company");
                 startActivity(intent);
 
             }
@@ -90,35 +95,47 @@ public class ViewCompanyActivity extends BaseActivity  {
     private void loadrecyclerviewdata() {
         p1= ProgressDialog.show(ViewCompanyActivity.this,"Downloading","Please wait");
 
-        String URL = "http://janamythri.com/Manjeri/mobileapi/Notification.php";
+        String URL = "http://192.168.0.30:5544/api/Companyapi/GetAllCompByOwnerId";
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         Log.e("Jsonnnn",""+response);
                         p1.dismiss();
                         if((!response.equals("[]"))&&(!response.equals("null"))) {
                             try {
 
+                                JSONObject o     = new JSONObject(response);
+                                JSONArray json_array   = o.getJSONArray("CompanyDetails");
 
+
+//                                try {
+//                                    jsonarray = response.getJSONArray("Table1");
+//                                    jsonarray1 = object.getJSONArray("Table1");
+//
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
 
                            /* JSONObject json_object =new JSONObject(response);
                             JSONArray json_array=json_object.getJSONArray(response);*/
-                                JSONArray json_array = new JSONArray(response);
+//                                JSONArray json_array = new JSONArray(response);
                                 int j;
                                 for (j = 0; j < json_array.length(); j++) {
-                                    JSONObject o = json_array.getJSONObject(j);
-                                    CompanyModelClass items = new CompanyModelClass(o.getString("Title"), o.getString("Date"),
-                                                                                    o.getString("Id"), o.getString("Content"),
-                                                                                    o.getString("Content"),o.getString("Content"),
-                                                                                    o.getString("Content"),o.getString("Content"),
-                                                                                    o.getString("Content"),o.getString("Content"),
-                                                                                    o.getString("Content"), o.getString("Content"));
+                                     o = json_array.getJSONObject(j);
+                                    CompanyModelClass items = new CompanyModelClass(o.getString("compId"),o.getString("ownerName"),
+                                                                                    o.getString("compName"), o.getString("contactPerson"),
+                                                                                    o.getString("contactNo"),o.getString("tradeLicence"),
+                                                                                    o.getString("tradeLicenceExpiry"),o.getString("trn"),
+                                                                                    o.getString("labourCardNumber"),o.getString("immigrationCardNumber"),
+                                                                                    o.getString("immigrationCardExpiry"), o.getString("tenancy"),o.getString("employeeCount"));
                                     Complist.add(items);
 
                                 }
                                 adapter = new CompanyAdapter(Complist, getApplicationContext());
                                 recyclerView.setAdapter(adapter);
+                                adapter.notifyDataSetChanged();
 
 
                             } catch (JSONException e) {
@@ -127,7 +144,7 @@ public class ViewCompanyActivity extends BaseActivity  {
                         }
                         else
                         {
-                            Toast.makeText(ViewCompanyActivity.this,"NO NOTIFICATION TO DISPLAY",Toast.LENGTH_LONG).show();
+                            Toast.makeText(ViewCompanyActivity.this,"No Company to Display",Toast.LENGTH_LONG).show();
                         }
 
 
@@ -147,7 +164,7 @@ public class ViewCompanyActivity extends BaseActivity  {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
-                param.put("OwnerID", OwnerID);
+                param.put("OwnerId", OwnerID);
                 return param;
             }
 

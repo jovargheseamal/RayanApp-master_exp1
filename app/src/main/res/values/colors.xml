@@ -16,6 +16,7 @@
     <color name="LayoutBG"> #f6f6f6</color>
     <color name="TextHead">#23313e</color>
     <color name="NotifyText">#00ddff</color>
+    <color name="indication">#ff5900</color>
 
 
 

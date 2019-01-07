@@ -41,6 +41,7 @@
     <!-- TODO: Update blank fragment layout -->
 
          <TextView
+
              android:layout_marginTop="5dp"
              android:layout_gravity="center"
              android:padding="10dp"
@@ -100,6 +101,7 @@
 
                 />
             <TextView
+                android:id="@+id/Cp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,6 +135,7 @@
 
                     />
                 <TextView
+                    android:id="@+id/TRL"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -170,6 +173,7 @@
 
                     />
                 <TextView
+                    android:id="@+id/trn_show"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -205,6 +209,7 @@
 
                     />
                 <TextView
+                    android:id="@+id/LCN"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -240,6 +245,7 @@
 
                     />
                 <TextView
+                    android:id="@+id/ICN"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -275,6 +281,7 @@
 
                     />
                 <TextView
+                    android:id="@+id/tenancy_show"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

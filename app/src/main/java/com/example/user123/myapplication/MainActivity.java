@@ -18,7 +18,8 @@ import android.widget.TextView;
 
 public class MainActivity extends BaseActivity {
 
-    String OwnerID,userType;
+    String OwnerID,userType,company, cp, trl, trn, lcn, icn, tncy,compID;
+
     TextView tvAppName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +33,29 @@ public class MainActivity extends BaseActivity {
         OwnerID =keys.getString("OwnerID",null);
         userType =keys.getString("UserType",null);
 
+        Bundle abBundle= getIntent().getExtras();
+
+        assert abBundle != null;
+        compID =abBundle.getString("CompID");
+        company = abBundle.getString("CompanyName");
+        cp = abBundle.getString("ContactPerson");
+        trl = abBundle.getString("TradeLicence");
+        trn = abBundle.getString("TRN");
+        lcn = abBundle.getString("LabourCNo");
+        icn = abBundle.getString("ImmigrationNo");
+        tncy = abBundle.getString("Tenancy");
+
+
         BottomNavigationView navigationMenu =(BottomNavigationView) findViewById(R.id.navigation);
 
         if(userType.equals("PRO")) {
 
-            Menu menu = navigationMenu.getMenu();
+            navigationMenu.getMenu().removeItem(R.id.users);
 
-            MenuItem target = menu.findItem(R.id.users);
-
-            target.setVisible(false);
+//            Menu menu = navigationMenu.getMenu();
+//
+//            MenuItem target = menu.findItem(R.id.users);
+//            target.setVisible(false);
         }
 
         final CompanyFragment companyFragment = new CompanyFragment();
@@ -51,7 +66,21 @@ public class MainActivity extends BaseActivity {
         tvAppName=(TextView)tb.findViewById(R.id.appname);
         tvAppName.setText("Company");
 
+
+        Bundle bundle= new Bundle();
+
+        bundle.putString("CompanyName",company);
+        bundle.putString("CompanyID",compID);
+        bundle.putString("ContactPerson",cp);
+        bundle.putString("TradeLicence",trl);
+        bundle.putString("LabourCNo",lcn);
+        bundle.putString("LabourCNo",trn);
+        bundle.putString("ImmigrationNo",icn);
+        bundle.putString("Tenancy",tncy);
+        companyFragment.setArguments(bundle);
+        employeeFragment.setArguments(bundle);
         setFragment(companyFragment);
+
 
 
 
@@ -62,6 +91,7 @@ public class MainActivity extends BaseActivity {
                 if( id == R.id.company) {
                     tvAppName.setText("Company");
                     setFragment(companyFragment);
+
                     return true;
 
                 }
