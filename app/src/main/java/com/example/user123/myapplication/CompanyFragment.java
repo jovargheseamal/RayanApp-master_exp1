@@ -1,6 +1,7 @@
 package com.example.user123.myapplication;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -18,8 +35,9 @@ import android.widget.TextView;
 public class CompanyFragment extends Fragment {
 
     ImageView edit;
-    String company, cp, trl, trn, lcn, icn, tncy,compID;
-    TextView Cname, ContactP, TradeLicence, Trn, LabourCardNum, ImmigrationCardNum, tenancy;
+    String company, cp, trl, trn, lcn, icn, tncy,compID,count;
+    TextView Cname, ContactP, TradeLicence, Trn, LabourCardNum, ImmigrationCardNum, tenancy,ecount;
+    ProgressDialog asyncdialog;
 
     public CompanyFragment() {
         // Required empty public constructor//
@@ -39,52 +57,18 @@ public class CompanyFragment extends Fragment {
         LabourCardNum = RootView.findViewById(R.id.LCN);
         ImmigrationCardNum = RootView.findViewById(R.id.ICN);
         tenancy = RootView.findViewById(R.id.tenancy_show);
-
+        ecount = RootView.findViewById(R.id.empCount);
+        asyncdialog = new ProgressDialog(getContext());
 
         Bundle abBundle = this.getArguments();
         if (abBundle != null) {
-            compID = abBundle.getString("CompanyID");
-            company = abBundle.getString("CompanyName");
-            cp = abBundle.getString("ContactPerson");
-            trl = abBundle.getString("TradeLicence");
-            lcn = abBundle.getString("LabourCNo");
-            trn = abBundle.getString("TRN");
-            icn = abBundle.getString("ImmigrationNo");
-            tncy = abBundle.getString("Tenancy");
-
-//            if(cp.equals("")){
-//                ContactP.setText("N/A");
-//            }
-//            else if(trl.equals("")){
-//                TradeLicence.setText("N/A");
-//            }
-//            else if(lcn.equals("")){
-//                LabourCardNum.setText("N/A");
-//            }
-//            else if(trn.equals("")){
-//                Trn.setText("N/A");
-//
-//            }
-//            else if(icn.equals("")){
-//
-//                ImmigrationCardNum.setText("N/A");
-//            }
-//            else if(tncy.equals("")){
-//
-//                tenancy.setText("N/A");
-//            }
+            compID = abBundle.getString("CompID");
 
 
 
-                Log.e("comingggggggg", "getttt" + trl);
 
-                Cname.setText(company);
-                ContactP.setText(cp);
-                TradeLicence.setText(trl);
-                Trn.setText(trn);
-                LabourCardNum.setText(lcn);
-                ImmigrationCardNum.setText(icn);
-                tenancy.setText(tncy);
+                Log.e("comingggggggg", "getttt" + compID);
+
 
 
 
@@ -103,11 +87,128 @@ public class CompanyFragment extends Fragment {
             });
             // Inflate the layout for this fragment
 
-
+        ViewCompany();
 
 
         return RootView;
     }
+
+
+    public void ViewCompany() {
+
+
+
+
+        String URL = "http://192.168.0.30:5544/api/Companyapi/GetCompById";
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        asyncdialog.dismiss();
+
+                        Log.e("uttutut", "" + response);
+
+
+                        try {
+
+                            Log.e("uttutut", "" + response);
+                            JSONObject o     = new JSONObject(response);
+                            JSONArray json_array   = o.getJSONArray("CompanyDetails");
+
+
+//                                try {
+//                                    jsonarray = response.getJSONArray("Table1");
+//                                    jsonarray1 = object.getJSONArray("Table1");
+//
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
+
+                           /* JSONObject json_object =new JSONObject(response);
+                            JSONArray json_array=json_object.getJSONArray(response);*/
+//                                JSONArray json_array = new JSONArray(response);
+                            int j;
+                            for (j = 0; j < json_array.length(); j++) {
+                                o = json_array.getJSONObject(j);
+                                company =o.getString("compName");
+                                cp = o.getString("contactPerson");
+                                trl = o.getString("tradeLicence");
+                                lcn = o.getString("trn");
+                                trn = o.getString("labourCardNumber");
+                                icn = o.getString("immigrationCardNumber");
+                                tncy = o.getString("tenancy");
+                                count = o.getString("employeeCount");
+
+                            }
+
+
+
+
+
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+
+                        Cname.setText(company);
+                        ContactP.setText(cp);
+                        TradeLicence.setText(trl);
+                        Trn.setText(trn);
+                        LabourCardNum.setText(lcn);
+                        ImmigrationCardNum.setText(icn);
+                        tenancy.setText(tncy);
+                        ecount.setText(count);
+                    }
+
+
+
+
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        asyncdialog.dismiss();
+                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+
+                    }
+                })
+        {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("CompId",compID);
+
+
+                Log.e("params",""+param);
+                return param;
+
+
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> param = new HashMap<String, String>();
+                param.put("Content-Type","application/x-www-form-urlencoded");
+                return param;
+            }
+        }
+                ;
+
+        // Volley.getInstance(this).addToRequestQueue(stringRequest);
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+        // Log.e("reqqqqqqqqqq",""+stringRequest.toString());
+
+
+
+
+
+
+
+    }
+
 
 
 }

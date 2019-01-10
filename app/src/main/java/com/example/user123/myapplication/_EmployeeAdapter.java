@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
-
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -37,14 +36,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHolder>{
 
-    private List<CompanyModelClass> View_List;
+public class _EmployeeAdapter extends RecyclerView.Adapter<_EmployeeAdapter.ViewHolder>{
+
+    private List<EmployeeModelClass> View_List;
     private Context context;
 
-    public CompanyAdapter(List<CompanyModelClass> view_List, Context context) {
-
-        this.View_List = view_List;
+    public _EmployeeAdapter(List<EmployeeModelClass> view_List, Context context) {
+        View_List = view_List;
         this.context = context;
     }
 
@@ -52,17 +51,18 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View view=LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.companylist,viewGroup,false);
+
+
+        View view=LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.employeelist,viewGroup,false);
         return new ViewHolder(view);
-
-
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
-        final CompanyModelClass List = View_List.get(i);
+
+        final EmployeeModelClass List = View_List.get(i);
 
         List<String> colors;
 
@@ -89,34 +89,23 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
         int i1 = r.nextInt(11 - 0) + 0;
 
 
-        viewHolder.prof.setText(List.getCompanyName().substring(0, 1));
-        viewHolder.ecount.setText(List.getEmployeeCount());
-        viewHolder.cv.setCardBackgroundColor(Color.parseColor(colors.get(i1)));
-        viewHolder.CompanyName.setText(List.getCompanyName());
-        viewHolder.Ownername.setText(List.getContactPerson());
-        viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
 
+        viewHolder.name.setText(List.getEmpName());
+        viewHolder.cv.setCardBackgroundColor(Color.parseColor(colors.get(i1)));
+        viewHolder.compname.setText(List.getCompanyName());
+        viewHolder.contact.setText(List.getPhoneNo());
+        viewHolder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, ViewEmployeeActivity.class);
+                intent.putExtra("EmpID",List.getEmpID());
 
 
-                Intent intent = new Intent(context, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("CompID", List.getCompID());
-                intent.putExtra("CompanyName", List.getCompanyName());
-                intent.putExtra("ContactPerson", List.getContactPerson());
-                intent.putExtra("TradeLicence", List.getTradeLicence());
-                intent.putExtra("TradeLicenceEXP", List.getTradeLicenceExpiry());
-                intent.putExtra("TradeLicenceEXP", List.getTradeLicenceExpiry());
-                intent.putExtra("TRN", List.getTRN());
-                intent.putExtra("LabourCNo", List.getLabourCardNumber());
-                intent.putExtra("ImmigrationNo", List.getImmigrationCardNumber());
-                intent.putExtra("ImmigrationEXP", List.getImmigrationCardNumberExpiry());
-                intent.putExtra("Tenancy", List.getTenancy());
-                intent.putExtra("Key","Company");
                 context.getApplicationContext().startActivity(intent);
+                ((MainActivity)context).finish();
             }
         });
+
 
         viewHolder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +117,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
 
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                 builder1.setTitle("Delete");
-                builder1.setMessage("Do you want to remove  "+ List.getCompanyName()+"?");
+                builder1.setMessage("Do you want to remove  "+ List.getEmpName()+"?");
                 builder1.setCancelable(true);
 
                 builder1.setPositiveButton(
@@ -143,7 +132,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
                             {
 
 
-                                String URL = "http://192.168.0.30:5544/api/Companyapi/DeleteCompany";
+                                String URL = "http://192.168.0.30:5544/api/EmployeeApi/DeleteEmployee";
 
 
                                 StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
@@ -157,7 +146,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
                                                     try {
 
                                                         JSONObject o     = new JSONObject(response);
-                                                        JSONArray json_array   = o.getJSONArray("CompanyDetails");
+                                                        JSONArray json_array   = o.getJSONArray("EmployeeResponse");
 
 
 
@@ -165,9 +154,13 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
                                                         e.printStackTrace();
                                                     }
 
-                                    Intent intent = new Intent(context, ViewCompanyActivity.class);
-                                    context.getApplicationContext().startActivity(intent);
-                                    ((ViewCompanyActivity)context).finish();
+                                                    Intent intent = new Intent(context, MainActivity.class);
+
+                                                    intent.putExtra("Key","Company");
+                                                    intent.putExtra("CompID",List.getCompId());
+                                                    Log.e("iddddddd",""+List.getCompId());
+                                                    context.getApplicationContext().startActivity(intent);
+                                                    ((MainActivity)context).finish();
                                                     //CMP_Name,ContactPerson,TradeLicence,TRN,LabourCard,Immigration,Tenancy;
 
                                                 }
@@ -193,11 +186,11 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
                                     @Override
                                     protected Map<String, String> getParams() throws AuthFailureError {
                                         Map<String, String> param = new HashMap<String, String>();
-                                        param.put("CompId", List.getCompID());
+                                        param.put("EmpID", List.getEmpID());
 
 
 
-                                        Log.e("iddddddd",""+List.getCompID());
+                                        Log.e("iddddddd",""+List.getEmpID());
 
                                         return param;
                                     }
@@ -246,50 +239,38 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
 
         });
 
+
+
+
     }
-
-
-
 
     @Override
     public int getItemCount() {
         return View_List.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public  class  ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView CompanyName,Ownername,prof,ecount;
-        LinearLayout parentLayout;
+        TextView name,compname,contact;
+        ImageView delete,edit;
         CardView cv;
-        ImageView delete;
+        LinearLayout parent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            context=itemView.getContext();
-
-            cv=itemView.findViewById(R.id.img1);
-            CompanyName=itemView.findViewById(R.id.CompListName);
-            Ownername=itemView.findViewById(R.id.CompListOwner);
-            parentLayout=itemView.findViewById(R.id.context);
-            prof=itemView.findViewById(R.id.img);
-            ecount=itemView.findViewById(R.id.empcount);
-            delete=itemView.findViewById(R.id.delete);
+            cv=itemView.findViewById(R.id.img12);
+            name=itemView.findViewById(R.id.EmpListName);
+            compname=itemView.findViewById(R.id.EmpListcomp);
+            contact=itemView.findViewById(R.id.empcontact1);
+            delete=itemView.findViewById(R.id.deleteemp);
+           // edit=itemView.findViewById(R.id.edituser);
+            parent=itemView.findViewById(R.id.contextemp);
 
 
 
 
-
-            }
-
-
-
-
-
-
-
-
-
+        }
     }
-}
 
+}
 

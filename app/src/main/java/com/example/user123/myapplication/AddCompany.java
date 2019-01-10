@@ -254,7 +254,7 @@ public class AddCompany extends BaseActivity {
 
                             Log.e("uttutut", "" + response);
                             JSONObject object     = new JSONObject(response);
-                            JSONArray jsonArray   = object.getJSONArray("SaveCompanyResult");
+                            JSONArray jsonArray   = object.getJSONArray("RegisterResponse");
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
                             code= jsonObject.getString("responseCode");
                             message=jsonObject.getString("responseMessage");
@@ -296,7 +296,7 @@ public class AddCompany extends BaseActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
                // param.put("OwnerName","");
-                param.put("CompId",companyID);
+
                 param.put("OwnerID",OwnerID);
                 param.put("CompanyName",CMP_Name.getText().toString());
                 param.put("ContactPerson",ContactPerson.getText().toString());
@@ -309,6 +309,10 @@ public class AddCompany extends BaseActivity {
                 param.put("ImmigrationCardExpiry",IMC_Exp_Day+"-"+IMC_Exp_Month+"-"+IMC_Exp_Year);
                 param.put("Tenancy",Tenancy.getText().toString());
                 param.put("Mode", Toolbar.substring(0,1));
+                if (Toolbar.substring(0,1).equals("E"))
+                {
+                    param.put("CompId",companyID);
+                }
 
                 Log.e("params",""+Toolbar.substring(0,1));
                 return param;

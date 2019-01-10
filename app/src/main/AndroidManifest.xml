@@ -28,14 +28,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".AddCompany"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-
-
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
             android:name=".RegisterActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -67,9 +63,9 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".ViewCompanyActivity" />
-        <activity android:name=".SplashScreen">
-        </activity>
-        <activity android:name=".ViewEmployeeActivity"></activity>
+        <activity android:name=".SplashScreen"></activity>
+        <activity android:name=".ViewEmployeeActivity" />
+        <activity android:name=".EmployeeEdit"></activity>
     </application>
 
 </manifest>

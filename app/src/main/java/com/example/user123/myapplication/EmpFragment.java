@@ -2,7 +2,6 @@ package com.example.user123.myapplication;
 
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -36,65 +35,77 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UserFragment extends Fragment {
+public class EmpFragment extends Fragment {
 
-    // FloatingActionButton fab = getView().findViewById(R.id.fab);
 
-    String compID;
+    String compID,cname;
     RecyclerView recyclerView;
     ProgressDialog p1;
     private RecyclerView.Adapter adapter;
 
-    private List<UserModelClass> Userlist;
+    private ArrayList<EmployeeModelClass> Emplist;
 
-    public UserFragment() {
-        // Required empty public constructor test
+
+    public EmpFragment() {
+        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View RootView = inflater.inflate(R.layout.fragment_user, container, false);
+        // Inflate the layout for this fragment
+        View RootView = inflater.inflate(R.layout.fragment_emp, container, false);
 
 
-        recyclerView = (RecyclerView) RootView.findViewById(R.id.userRecycler);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+
+        recyclerView =  RootView.findViewById(R.id.emprecycler);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        Userlist = new ArrayList<>();
+        recyclerView.setLayoutManager(linearLayoutManager);
+        Emplist = new ArrayList<>();
+        FloatingActionButton fab = RootView.findViewById(R.id.fab2);
 
-
-        Bundle abBundle = this.getArguments();
-        if (abBundle != null) {
-            compID = abBundle.getString("CompID");
-
-            FloatingActionButton fab = RootView.findViewById(R.id.fab3);
-
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), AddUser.class);
-                    intent.putExtra("ToolText", "New User");
-                    intent.putExtra("CompID", compID);
-                    startActivity(intent);
-                }
-            });
+        Bundle bundle = this.getArguments();
+        compID = bundle.getString("CompID");
+        cname= bundle.getString("CompanyName");
 
 
 
-        }
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),AddEmployee.class);
+                intent.putExtra("CompID",compID);
+                intent.putExtra("CompanyName",cname);
+                intent.putExtra("ToolText","New Employee");
+                startActivity(intent);
+            }
+        });
+
 
         loadrecyclerviewdata();
 
+
         return RootView;
 
+
     }
+
+
+
+
+
 
 
     private void loadrecyclerviewdata() {
         p1= ProgressDialog.show(getContext(),"Downloading","Please wait");
 
-        String URL = "http://192.168.0.30:5544/api/UserApi/GetAllUsersByCompId";
+        String URL = "http://192.168.0.30:5544/api/EmployeeApi/GetAllEmpByCompId";
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override
@@ -106,32 +117,38 @@ public class UserFragment extends Fragment {
                             try {
 
                                 JSONObject o     = new JSONObject(response);
-                                JSONArray json_array   = o.getJSONArray("UserDetails");
+                                JSONArray json_array   = o.getJSONArray("EmpDetails");
 
 
-//                                try {
-//                                    jsonarray = response.getJSONArray("Table1");
-//                                    jsonarray1 = object.getJSONArray("Table1");
-//
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
-
-                           /* JSONObject json_object =new JSONObject(response);
-                            JSONArray json_array=json_object.getJSONArray(response);*/
-//                                JSONArray json_array = new JSONArray(response);
                                 int j;
                                 for (j = 0; j < json_array.length(); j++) {
                                     o = json_array.getJSONObject(j);
-                                    UserModelClass items = new UserModelClass(o.getString("CompanyName"),o.getString("UserID"),o.getString("Name"),
-                                            o.getString("UserName"), o.getString("ContactNo"),o.getString("CompId"));
+                                    EmployeeModelClass items = new EmployeeModelClass (
+                                            o.getString("EmpID"),
+                                            o.getString("CompId"),
+                                            o.getString("EmpName"),
+                                            o.getString("Address"),
+                                            o.getString("PhoneNo"),
+                                            o.getString("DOB"),
+                                            o.getString("EmailID"),
+                                            o.getString("EmiratesID"),
+                                            o.getString("PassportNO"),
+                                            o.getString("PassportExpiry"),
+                                            o.getString("WorkPermit"),
+                                            o.getString("WorkPermitExpiry"),
+                                            o.getString("VisaExpiry"),
+                                            o.getString("UIDNumber"),
+                                            o.getString("FileNumber"),
+                                            o.getString("CompanyName"));
 
-                                    Userlist.add(items);
+                                    Emplist.add(items);
 
                                 }
-                                adapter = new _UserAdapter(Userlist, getContext());
+
+
+                                adapter = new _EmployeeAdapter(Emplist,getActivity());
                                 recyclerView.setAdapter(adapter);
-                                adapter.notifyDataSetChanged();
+                                //adapter.notifyDataSetChanged();
 
 
                             } catch (JSONException e) {
@@ -182,4 +199,3 @@ public class UserFragment extends Fragment {
     }
 
 }
-
