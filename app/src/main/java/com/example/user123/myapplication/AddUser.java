@@ -3,6 +3,7 @@ package com.example.user123.myapplication;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -35,7 +36,7 @@ public class AddUser extends BaseActivity {
     TextView txtuser,useSbmit;
     EditText FullName,UserName,Contact,Password,CPassword;
     ProgressDialog asyncDialog;
-    String Code,Message,compID,toolbar,Name,ContactNo ,UName, Pword,userID ;
+    String Code,Message,compID,toolbar,Name,ContactNo ,UName, Pword,userID,logUsID ,compname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,16 +45,16 @@ public class AddUser extends BaseActivity {
         getLayoutInflater().inflate(R.layout.activity_add_user, contentFrameLayout);
 
 
-
-
-
+        SharedPreferences keys =getSharedPreferences("MyPref",MODE_PRIVATE);
+        logUsID = keys.getString("LoginUserID",null);
+        asyncDialog= new ProgressDialog(this);
         Bundle abBundle = getIntent().getExtras();
         if (abBundle != null) {
 
             compID = abBundle.getString("CompID");
             toolbar = abBundle.getString("ToolText");
             userID = abBundle.getString("UserId");
-
+            compname= abBundle.getString("CompanyName");
 
             Toolbar tb = getToolBar();
             txtuser = (TextView) tb.findViewById(R.id.appname);
@@ -62,11 +63,12 @@ public class AddUser extends BaseActivity {
 
             if(toolbar.equalsIgnoreCase("Edit User"))
             {
+
                 UserEdit();
             }
 
 
-            asyncDialog = new ProgressDialog(AddUser.this);
+//            asyncDialog = new ProgressDialog(AddUser.this);
             useSbmit = findViewById(R.id.user_submit);
             UserName = findViewById(R.id.usrname);
             Contact = findViewById(R.id.usr_contact_no);
@@ -102,19 +104,19 @@ public class AddUser extends BaseActivity {
                 }
             });
 
-            Password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View arg0, final boolean hasfocus) {
-                    if (hasfocus) {
-
-                        Password.setError("Mandatory Field");
-                    } else {
-                        Password.clearFocus();
-
-
-                    }
-                }
-            });
+//            Password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//                @Override
+//                public void onFocusChange(View arg0, final boolean hasfocus) {
+//                    if (hasfocus) {
+//
+//                        Password.setError("Mandatory Field");
+//                    } else {
+//                        Password.clearFocus();
+//
+//
+//                    }
+//                }
+//            });
 
 
             useSbmit.setOnClickListener(new View.OnClickListener() {
@@ -170,10 +172,12 @@ public class AddUser extends BaseActivity {
     public void UserRegister() {
 
 
+        asyncDialog.setTitle("Users");
+        asyncDialog.setMessage("Fetching User Details");
+        asyncDialog.show();
 
 
-
-        String URL = "http://192.168.0.30:5544/api/UserApi/AddEditUser";
+        String URL = this.getString(R.string.Local_URL)+"/api/UserApi/AddEditUser";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -193,7 +197,7 @@ public class AddUser extends BaseActivity {
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
                             Code= jsonObject.getString("responseCode");
                             Message=jsonObject.getString("responseMessage");
-                            Log.e("uttutut", "" + Code);
+                            Log.e("Addddd", "cnameee=" + compname);
 
                             if (Code.equals("0")) {
 
@@ -202,10 +206,25 @@ public class AddUser extends BaseActivity {
                                 Intent intent = new Intent(AddUser.this, MainActivity.class);
                                 intent.putExtra("Key","User");
                                 intent.putExtra("CompID",compID);
+                                intent.putExtra("CompanyName",compname);
 
                                 startActivity(intent);
-                                Toast.makeText(AddUser.this, "User Registered", Toast.LENGTH_LONG).show();
+                                finish();
+                                if(toolbar.equals("Edit User")) {
+
+
+                                    Toast.makeText(AddUser.this, "Edit successful", Toast.LENGTH_LONG).show();
+
+
+                                }
+                                else {
+                                    Toast.makeText(AddUser.this, "User Registered", Toast.LENGTH_LONG).show();
+                                }
+
+
                             } else {
+
+                                UserName.setError("Already Exist");
 
                                 Toast.makeText(AddUser.this,  Message, Toast.LENGTH_LONG).show();
 
@@ -227,7 +246,7 @@ public class AddUser extends BaseActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         asyncDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Unexpected Response", Toast.LENGTH_LONG).show();
 
                     }
                 })
@@ -237,12 +256,12 @@ public class AddUser extends BaseActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("CompId",compID);
-
                 param.put("Name",FullName.getText().toString());
                 param.put("ContactNo",Contact.getText().toString());
                 param.put("UserName", UserName.getText().toString());
                 param.put("Password", Password.getText().toString());
                 param.put("Mode",toolbar.substring(0,1));
+                param.put("LoginUserId",logUsID);
                 if (toolbar.substring(0,1).equals("E"))
                 {
                     param.put("UserId",userID);
@@ -283,7 +302,7 @@ public class AddUser extends BaseActivity {
 
 
 
-        String URL = "http://192.168.0.30:5544/api/UserApi/GetUserById";
+        String URL =this.getString(R.string.Local_URL)+"/api/UserApi/GetUserById";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,

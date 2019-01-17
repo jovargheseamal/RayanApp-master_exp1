@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyApplication</string>
+    <string name="app_name">Rayan</string>
     <string name="Open">Open</string>
     <string name="Close">Close</string>
     <string name="Content">
@@ -52,6 +52,16 @@
         Jurf 2,
         Ajman,
         UAE
+
+    </string>
+
+    <string name="cloud_URL">
+    http://192.168.0.30:5544
+
+    </string>
+    <string name="Local_URL">
+     http://103.228.112.79:100
+
 
     </string>
 

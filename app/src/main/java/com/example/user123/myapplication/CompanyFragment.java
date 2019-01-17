@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,6 +75,11 @@ public class CompanyFragment extends Fragment {
 
         }
 
+        ViewCompany();
+
+
+
+
 
 
             edit.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +93,6 @@ public class CompanyFragment extends Fragment {
             });
             // Inflate the layout for this fragment
 
-        ViewCompany();
 
 
         return RootView;
@@ -99,7 +104,7 @@ public class CompanyFragment extends Fragment {
 
 
 
-        String URL = "http://192.168.0.30:5544/api/Companyapi/GetCompById";
+        String URL = this.getString(R.string.Local_URL)+"/api/Companyapi/GetCompById";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -135,8 +140,8 @@ public class CompanyFragment extends Fragment {
                                 company =o.getString("compName");
                                 cp = o.getString("contactPerson");
                                 trl = o.getString("tradeLicence");
-                                lcn = o.getString("trn");
-                                trn = o.getString("labourCardNumber");
+                                trn = o.getString("trn");
+                                 lcn= o.getString("labourCardNumber");
                                 icn = o.getString("immigrationCardNumber");
                                 tncy = o.getString("tenancy");
                                 count = o.getString("employeeCount");
@@ -152,13 +157,71 @@ public class CompanyFragment extends Fragment {
                         }
 
                         Cname.setText(company);
-                        ContactP.setText(cp);
-                        TradeLicence.setText(trl);
-                        Trn.setText(trn);
-                        LabourCardNum.setText(lcn);
-                        ImmigrationCardNum.setText(icn);
-                        tenancy.setText(tncy);
-                        ecount.setText(count);
+
+
+                        if (cp != null && !cp.isEmpty() && !cp.equals("null")) {
+                            ContactP.setText(cp);
+                        }
+                        else
+                        {
+                            ContactP.setText("N/A");
+                        }
+
+
+                        if (trl != null && !trl.isEmpty() && !trl.equals("null")) {
+                            TradeLicence.setText(trl);
+                        }
+                        else
+                        {
+                            TradeLicence.setText("N/A");
+                        }
+
+
+                        if (lcn != null && !lcn.isEmpty() && !lcn.equals("null")) {
+                            LabourCardNum.setText(lcn);
+                        }
+                        else
+                        {
+                            LabourCardNum.setText("N/A");
+                        }
+
+
+
+                        if (trn != null && !trn.isEmpty() && !trn.equals("null")) {
+                            Trn.setText(trn);
+                        }
+                        else
+                        {
+                            Trn.setText("N/A");
+                        }
+
+                        if (tncy != null && !tncy.isEmpty() && !tncy.equals("null")) {
+                            tenancy.setText(tncy);
+                        }
+                        else
+                        {
+                            tenancy.setText("N/A");
+                        }
+
+                        if (count != null && !count.isEmpty() && !count.equals("null")) {
+                            ecount.setText(count);
+                        }
+                        else
+                        {
+                            ecount.setText("0");
+                        }
+
+
+
+//
+//                            ContactP.setText(cp);
+//                            TradeLicence.setText(trl);
+//                            Trn.setText(trn);
+//                            LabourCardNum.setText(lcn);
+//                            ImmigrationCardNum.setText(icn);
+//                            tenancy.setText(tncy);
+//                            ecount.setText(count);
+
                     }
 
 

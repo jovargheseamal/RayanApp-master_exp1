@@ -58,93 +58,92 @@ public class RegisterActivity extends AppCompatActivity {
         scrollView=findViewById(R.id.scrollcmp);
 
 
-
-
-        OwnerName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View arg0, final boolean hasfocus) {
-                if (hasfocus) {
-
-                    OwnerName.setError("Mandatory Field");
-
-                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                        @Override
-                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-                            OwnerName.clearFocus();
-
-                        }
-                    });
-
-                }
-            }
-        });
-
-
-        CompName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View arg0, final boolean hasfocus) {
-                if (hasfocus) {
-
-                    CompName.setError("Mandatory Field");
-
-                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                        @Override
-                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-                            CompName.clearFocus();
-
-                        }
-                    });
-
-                }
-            }
-        });
-
-
-
-
-
-        UserName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View arg0, final boolean hasfocus) {
-                if (hasfocus) {
-
-                    UserName.setError("Mandatory Field");
-
-                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                        @Override
-                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-                            UserName.clearFocus();
-
-                        }
-                    });
-
-                }
-            }
-        });
-
-
-        Password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View arg0, final boolean hasfocus) {
-                if (hasfocus) {
-
-                    Password.setError("Mandatory Field");
-
-                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                        @Override
-                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-                            Password.clearFocus();
-
-                        }
-                    });
-
-                }
-            }
-        });
+//
+//        OwnerName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View arg0, final boolean hasfocus) {
+//                if (hasfocus) {
+//
+//                    OwnerName.setError("Mandatory Field");
+//
+//                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//                        @Override
+//                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//
+//                            OwnerName.clearFocus();
+//
+//                        }
+//                    });
+//
+//                }
+//            }
+//        });
+//
+//
+//        CompName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View arg0, final boolean hasfocus) {
+//                if (hasfocus) {
+//                    OwnerName.clearFocus();
+//                    CompName.setError("Mandatory Field");
+//
+//                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//                        @Override
+//                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//
+//                            CompName.clearFocus();
+//
+//                        }
+//                    });
+//
+//                }
+//            }
+//        });
+//
+//
+//
+//
+//
+//        UserName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View arg0, final boolean hasfocus) {
+//                if (hasfocus) {
+//                    CompName.clearFocus();
+//                    UserName.setError("Mandatory Field");
+//
+//                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//                        @Override
+//                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//
+//                            UserName.clearFocus();
+//
+//                        }
+//                    });
+//
+//                }
+//            }
+//        });
+//
+//
+//        Password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View arg0, final boolean hasfocus) {
+//                if (hasfocus) {
+//                    UserName.clearFocus();
+//                    Password.setError("Mandatory Field");
+//
+//                    scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//                        @Override
+//                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//
+//                            Password.clearFocus();
+//
+//                        }
+//                    });
+//
+//                }
+//            }
+//        });
 
 
 
@@ -154,9 +153,24 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 asyncDialog.setMessage("Registration In Progress...");
-                //show dialog
-                asyncDialog.show();
-                AdminRegister();
+
+                if ((OwnerName.getText().toString().equalsIgnoreCase("")) || (CompName.getText().toString().equalsIgnoreCase(""))
+                        ||(Password.getText().toString().equalsIgnoreCase(""))|| (UserName.getText().toString().equalsIgnoreCase("")))
+                {   asyncDialog.dismiss();
+                    OwnerName.setError("Field is Mandatory");
+                    CompName.setError("Field is Mandatory");
+                    UserName.setError("Field is Mandatory");
+                    Password.setError("Field is Mandatory");
+
+                    Toast.makeText(RegisterActivity.this, "Fields Cannot Be Empty", Toast.LENGTH_LONG).show();
+
+
+                }
+                else{
+                    asyncDialog.show();
+                    AdminRegister();
+
+                }
 
             }
         });
@@ -167,7 +181,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-        String URL = "http://192.168.0.30:5544/api/userapi/adminRegister";
+        String URL = this.getString(R.string.Local_URL)+"/api/userapi/adminRegister";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -192,6 +206,7 @@ public class RegisterActivity extends AppCompatActivity {
                             if (code.equals("0")) {
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
+                                finish();
                                 Toast.makeText(RegisterActivity.this, "Registration Success", Toast.LENGTH_LONG).show();
                             } else {
 
@@ -215,7 +230,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         asyncDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "No Response From Server ", Toast.LENGTH_LONG).show();
 
                     }
                 })

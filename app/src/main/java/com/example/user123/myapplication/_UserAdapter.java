@@ -97,12 +97,14 @@ public class _UserAdapter extends RecyclerView.Adapter<_UserAdapter.ViewHolder>{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, AddUser.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("ToolText","Edit User");
                 intent.putExtra("UserId",List.getUserID());
                 intent.putExtra("CompID",List.getCompId());
+                intent.putExtra("CompanyName",List.getCompanyName());
 
                 context.getApplicationContext().startActivity(intent);
-//                ((AddUser)context).finish();
+                ((MainActivity)context).finish();
             }
         });
 
@@ -132,7 +134,7 @@ public class _UserAdapter extends RecyclerView.Adapter<_UserAdapter.ViewHolder>{
                             {
 
 
-                                String URL = "http://192.168.0.30:5544/api/UserApi/DeleteUser";
+                                String URL = context.getString(R.string.Local_URL)+"/api/UserApi/DeleteUser";
 
 
                                 StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
@@ -155,10 +157,12 @@ public class _UserAdapter extends RecyclerView.Adapter<_UserAdapter.ViewHolder>{
                                                     }
 
                                                     Intent intent = new Intent(context, MainActivity.class);
-
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                     intent.putExtra("Key","User");
                                                     intent.putExtra("CompID",List.getCompId());
+                                                    intent.putExtra("CompanyName",List.getCompanyName());
                                                     Log.e("iddddddd",""+List.getCompId());
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                     context.getApplicationContext().startActivity(intent);
                                                     ((MainActivity)context).finish();
                                                     //CMP_Name,ContactPerson,TradeLicence,TRN,LabourCard,Immigration,Tenancy;
@@ -178,7 +182,7 @@ public class _UserAdapter extends RecyclerView.Adapter<_UserAdapter.ViewHolder>{
                                             @Override
                                             public void onErrorResponse(VolleyError error) {
                                                 // asyncDialog.dismiss();
-                                                Toast.makeText(context,error.getMessage(),Toast.LENGTH_LONG).show();
+                                                Toast.makeText(context, "No Response From Server ", Toast.LENGTH_LONG).show();
 
                                             }
                                         }) {

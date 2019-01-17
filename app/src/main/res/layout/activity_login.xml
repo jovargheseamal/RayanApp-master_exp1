@@ -142,6 +142,37 @@
 
     </RelativeLayout>
 
+
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+
+        <CheckBox
+            android:id="@+id/logcheck"
+            android:clickable="true"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/TextHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keep Me Logged in"
+            android:textSize="15dp"
+            />
+
+
+    </LinearLayout>
+
+
+
     <LinearLayout
         android:padding="30dp"
         android:orientation="horizontal"
@@ -176,6 +207,9 @@
 
 
     </LinearLayout>
+
+
+
 
 
 </LinearLayout>

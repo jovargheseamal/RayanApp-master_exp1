@@ -98,11 +98,10 @@ public class _EmployeeAdapter extends RecyclerView.Adapter<_EmployeeAdapter.View
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ViewEmployeeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("EmpID",List.getEmpID());
-
-
                 context.getApplicationContext().startActivity(intent);
-                ((MainActivity)context).finish();
+//                ((MainActivity)context).finish();
             }
         });
 
@@ -132,7 +131,7 @@ public class _EmployeeAdapter extends RecyclerView.Adapter<_EmployeeAdapter.View
                             {
 
 
-                                String URL = "http://192.168.0.30:5544/api/EmployeeApi/DeleteEmployee";
+                                String URL =context.getString(R.string.Local_URL)+"/api/EmployeeApi/DeleteEmployee";
 
 
                                 StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
@@ -156,9 +155,10 @@ public class _EmployeeAdapter extends RecyclerView.Adapter<_EmployeeAdapter.View
 
                                                     Intent intent = new Intent(context, MainActivity.class);
 
-                                                    intent.putExtra("Key","Company");
+                                                    intent.putExtra("Key","Employee");
                                                     intent.putExtra("CompID",List.getCompId());
                                                     Log.e("iddddddd",""+List.getCompId());
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // must for intent from adapter
                                                     context.getApplicationContext().startActivity(intent);
                                                     ((MainActivity)context).finish();
                                                     //CMP_Name,ContactPerson,TradeLicence,TRN,LabourCard,Immigration,Tenancy;
@@ -178,7 +178,7 @@ public class _EmployeeAdapter extends RecyclerView.Adapter<_EmployeeAdapter.View
                                             @Override
                                             public void onErrorResponse(VolleyError error) {
                                                 // asyncDialog.dismiss();
-                                                Toast.makeText(context,error.getMessage(),Toast.LENGTH_LONG).show();
+                                                Toast.makeText(context, "No Response From Server ", Toast.LENGTH_LONG).show();
 
                                             }
                                         }) {

@@ -1,6 +1,7 @@
 package com.example.user123.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class BaseActivity extends AppCompatActivity {
@@ -16,8 +18,9 @@ public class BaseActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     public Toolbar toolbar;
-    public TextView head;
+    public TextView head,prof;
     private NavigationView navigationView;
+    String Name;
 
     public Toolbar getToolBar(){
         return toolbar;
@@ -28,14 +31,30 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 
 
+
+        SharedPreferences keys =getSharedPreferences("MyPref",MODE_PRIVATE);
+
+        Name =keys.getString("LoginName",null);
+
+
+
+
+
+
         head =findViewById(R.id.appname);
+
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         navigationView = (NavigationView)findViewById(R.id.navigation_view);
         drawerLayout =(DrawerLayout)findViewById(R.id.drawer_layout2);
         toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.Open,R.string.Close);
         drawerLayout.addDrawerListener(toggle);
+//        prof.setText(Name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        View headerView = navigationView.getHeaderView(0);
+        prof = (TextView) headerView.findViewById(R.id.drawable_prof);
+        prof.setText(Name.substring(0,1));
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -73,6 +92,10 @@ public class BaseActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         break;
                     case R.id.Logout:
+                        SharedPreferences settings = getSharedPreferences("PREFS_NAME", 0);
+                        SharedPreferences.Editor editor1 = settings.edit();
+                        editor1.putBoolean("isChecked", false);
+                        editor1.apply();
                         intent = new Intent(BaseActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();

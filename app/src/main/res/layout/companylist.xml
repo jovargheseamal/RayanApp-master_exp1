@@ -64,6 +64,8 @@
                     android:layout_height="wrap_content"
                     android:text="Company Name"/>
 
+
+
                     <TextView
                         android:id="@+id/CompListOwner"
                         android:layout_marginTop="10dp"

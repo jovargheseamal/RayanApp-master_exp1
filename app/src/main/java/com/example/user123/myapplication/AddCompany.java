@@ -30,15 +30,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class AddCompany extends BaseActivity {
 
     TextView txtxmpny,register;
     ProgressDialog asyncDialog;
-    String TRN_Exp_Day,TRN_Exp_Month,TRN_Exp_Year,IMC_Exp_Day,IMC_Exp_Month,IMC_Exp_Year,code,message,OwnerID,Toolbar,companyID,Mode;
-    String compname,cp,Tl,Trn,Lcn,Icn,tenancy;
+    String TRN_Exp_Day,TRN_Exp_Month,TRN_Exp_Year,IMC_Exp_Day,IMC_Exp_Month,IMC_Exp_Year,code,message,OwnerID,Toolbar,companyID,Mode,UsID;
+    String compname,cp,Tl,Trn,Lcn,Icn,tenancy,TLExpiry,IMCExpiry;
 
     String array_day[] = {"DD", "1", "2", "3", "4", "5", "6","7","8","9","10",
             "11", "12", "13", "14", "15", "16","17","18","19","20","21", "22",
@@ -64,15 +69,16 @@ public class AddCompany extends BaseActivity {
 
         SharedPreferences keys =getSharedPreferences("MyPref",MODE_PRIVATE);
         OwnerID =keys.getString("OwnerID",null);
+        UsID= keys.getString("LoginUserID",null);
+
+
+
 
         Bundle abBundle= getIntent().getExtras();
         Toolbar =abBundle.getString("ToolText");
         companyID=abBundle.getString("CompID");
        // Mode=Toolbar.
 
-        if (Toolbar.equalsIgnoreCase("Edit Company")) {
-            EditUser();
-        }
 // toolbar
 
         Toolbar tb=getToolBar();
@@ -109,7 +115,7 @@ public class AddCompany extends BaseActivity {
 
         ///day////////
 
-        ArrayAdapter<String> spinner_adapter = new ArrayAdapter<String>(this,
+      final   ArrayAdapter<String> spinner_adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, array_day);
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         TRday.setAdapter(spinner_adapter);
@@ -144,7 +150,7 @@ public class AddCompany extends BaseActivity {
 
         ////month////////
 
-        ArrayAdapter<String> _adaptermnth = new ArrayAdapter<String>(this,
+       final ArrayAdapter<String> _adaptermnth = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, array_Mnth);
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         TRmonth.setAdapter(_adaptermnth);
@@ -180,7 +186,7 @@ public class AddCompany extends BaseActivity {
 
         ////year////////
 
-        ArrayAdapter<String> _adapteryear = new ArrayAdapter<String>(this,
+     final    ArrayAdapter<String> _adapteryear = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, array_Year);
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         TRyear.setAdapter(_adapteryear);
@@ -214,6 +220,206 @@ public class AddCompany extends BaseActivity {
 
 
 
+        if (Toolbar.equalsIgnoreCase("Edit Company")) {
+
+
+
+
+
+
+
+            String URL =this.getString(R.string.Local_URL)+"/api/Companyapi/GetCompById";
+
+
+            StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            Log.e("Jsonnnn",""+response);
+                            //asyncDialog.dismiss();
+                            if((!response.equals("[]"))&&(!response.equals("null"))) {
+                                try {
+
+                                    JSONObject o     = new JSONObject(response);
+                                    JSONArray json_array   = o.getJSONArray("CompanyDetails");
+
+
+//                                try {
+//                                    jsonarray = response.getJSONArray("Table1");
+//                                    jsonarray1 = object.getJSONArray("Table1");
+//
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
+
+                           /* JSONObject json_object =new JSONObject(response);
+                            JSONArray json_array=json_object.getJSONArray(response);*/
+//                                JSONArray json_array = new JSONArray(response);
+                                    int j;
+                                    for (j = 0; j < json_array.length(); j++) {
+                                        o = json_array.getJSONObject(j);
+                                        compname=o.getString("compName");
+                                        cp = o.getString("contactPerson");
+                                        Tl = o.getString("tradeLicence");
+                                        Trn = o.getString("trn");
+                                        Lcn= o.getString("labourCardNumber");
+                                        Icn= o.getString("immigrationCardNumber");
+                                        tenancy= o.getString("tenancy");
+                                        TLExpiry =o.getString("tradeLicenceExpiry");
+                                        IMCExpiry=o.getString("immigrationCardExpiry");
+
+//                                            o.getString("contactNo"),
+//                                            ,o.getString("trn"),
+//                                           ,,
+//                                            ,,o.getString("employeeCount");
+
+
+                                        //compname,cp,Tl,Trn,Lcn,Icn,tenancy
+
+                                    }
+
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+
+
+                                Date d = null;
+                                try {
+                                    d = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).parse(TLExpiry);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                Calendar cal = Calendar.getInstance();
+                                cal.setTime(d);
+
+
+                                TRN_Exp_Day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+                                try {
+                                    TRN_Exp_Month = getMonth(TLExpiry);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                TRN_Exp_Year = Integer.toString(cal.get(Calendar.YEAR));
+
+
+                                int Td = spinner_adapter.getPosition(TRN_Exp_Day);
+                                int Tm = _adaptermnth.getPosition(TRN_Exp_Month);
+                                int Ty = _adapteryear.getPosition(TRN_Exp_Year);
+
+
+
+                                TRday.setSelection(Td);
+                                TRmonth.setSelection(Tm);
+                                TRyear.setSelection(Ty);
+
+
+
+
+
+
+
+
+                                try {
+                                    d = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).parse(IMCExpiry);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+                                cal.setTime(d);
+                                Log.e("Monthhhhhhhhhh", "" + d);
+
+
+                                IMC_Exp_Day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+                                try {
+                                    IMC_Exp_Month = getMonth(IMCExpiry);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                IMC_Exp_Year = Integer.toString(cal.get(Calendar.YEAR));
+
+
+                                int vd = spinner_adapter.getPosition(IMC_Exp_Day);
+                                int vm = _adaptermnth.getPosition(IMC_Exp_Month);
+                                int vy = _adapteryear.getPosition(IMC_Exp_Year);
+
+
+
+                                IM_Day.setSelection(vd);
+                                IM_Month.setSelection(vm);
+                                IM_Year.setSelection(vy);
+
+                                ContactPerson.setFocusable(true);
+
+                                CMP_Name.setText(compname);
+                                ContactPerson.setText(cp);
+                                TradeLicence.setText(Tl);
+                                TRN.setText(Trn);
+                                LabourCard.setText(Lcn);
+                                Immigration.setText(Icn);
+                                Tenancy.setText(tenancy);
+
+
+
+                                //CMP_Name,ContactPerson,TradeLicence,TRN,LabourCard,Immigration,Tenancy;
+
+                            }
+                            else
+                            {
+                                Toast.makeText(AddCompany.this,"No Company to Display",Toast.LENGTH_LONG).show();
+                            }
+
+
+
+
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // asyncDialog.dismiss();
+                            Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+
+                        }
+                    }) {
+
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> param = new HashMap<String, String>();
+                    param.put("CompId", companyID);
+
+
+
+                    Log.e("iddddddd",""+companyID);
+
+                    return param;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String,String> param = new HashMap<String, String>();
+                    param.put("Content-Type","application/x-www-form-urlencoded");
+                    return param;
+                }
+            }
+                    ;
+
+            // Volley.getInstance(this).addToRequestQueue(stringRequest);
+            RequestQueue requestQueue= Volley.newRequestQueue(this);
+            requestQueue.add(stringRequest);
+
+
+
+        }
+
+
+
+
+
+
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -238,7 +444,7 @@ public class AddCompany extends BaseActivity {
 
 
 
-        String URL = "http://192.168.0.30:5544/api/Companyapi/AddEditCompany";
+        String URL = this.getString(R.string.Local_URL)+"/api/Companyapi/AddEditCompany";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -309,6 +515,7 @@ public class AddCompany extends BaseActivity {
                 param.put("ImmigrationCardExpiry",IMC_Exp_Day+"-"+IMC_Exp_Month+"-"+IMC_Exp_Year);
                 param.put("Tenancy",Tenancy.getText().toString());
                 param.put("Mode", Toolbar.substring(0,1));
+                param.put("LoginUserId", UsID);
                 if (Toolbar.substring(0,1).equals("E"))
                 {
                     param.put("CompId",companyID);
@@ -342,120 +549,16 @@ public class AddCompany extends BaseActivity {
     }
 
 
-    public  void EditUser() {
-
-
-        String URL = "http://192.168.0.30:5544/api/Companyapi/GetCompById";
-
-
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        Log.e("Jsonnnn",""+response);
-                        //asyncDialog.dismiss();
-                        if((!response.equals("[]"))&&(!response.equals("null"))) {
-                            try {
-
-                                JSONObject o     = new JSONObject(response);
-                                JSONArray json_array   = o.getJSONArray("CompanyDetails");
-
-
-//                                try {
-//                                    jsonarray = response.getJSONArray("Table1");
-//                                    jsonarray1 = object.getJSONArray("Table1");
-//
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
-
-                           /* JSONObject json_object =new JSONObject(response);
-                            JSONArray json_array=json_object.getJSONArray(response);*/
-//                                JSONArray json_array = new JSONArray(response);
-                                int j;
-                                for (j = 0; j < json_array.length(); j++) {
-                                    o = json_array.getJSONObject(j);
-                                    compname=o.getString("compName");
-                                     cp = o.getString("contactPerson");
-                                     Tl = o.getString("tradeLicence");
-                                     Trn = o.getString("trn");
-                                     Lcn= o.getString("labourCardNumber");
-                                    Icn= o.getString("immigrationCardNumber");
-                                    tenancy= o.getString("tenancy");
-
-//                                            o.getString("contactNo"),
-//                                            o.getString("tradeLicenceExpiry"),o.getString("trn"),
-//                                           ,,
-//                                            o.getString("immigrationCardExpiry"),,o.getString("employeeCount");
-
-
-                                    //compname,cp,Tl,Trn,Lcn,Icn,tenancy
-
-                                }
-
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            CMP_Name.setText(compname);
-                            ContactPerson.setText(cp);
-                            TradeLicence.setText(Tl);
-                            TRN.setText(Trn);
-                            LabourCard.setText(Lcn);
-                            Immigration.setText(Icn);
-                            Tenancy.setText(tenancy);
 
 
 
-                            //CMP_Name,ContactPerson,TradeLicence,TRN,LabourCard,Immigration,Tenancy;
+    private static String getMonth(String date) throws ParseException {
+        Date d = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).parse(date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        String monthName = new SimpleDateFormat("MMM").format(cal.getTime());
 
-                        }
-                        else
-                        {
-                            Toast.makeText(AddCompany.this,"No Company to Display",Toast.LENGTH_LONG).show();
-                        }
-
-
-
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                       // asyncDialog.dismiss();
-                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
-
-                    }
-                }) {
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> param = new HashMap<String, String>();
-                param.put("CompId", companyID);
-
-
-
-                Log.e("iddddddd",""+companyID);
-
-                return param;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String,String> param = new HashMap<String, String>();
-                param.put("Content-Type","application/x-www-form-urlencoded");
-                return param;
-            }
-        }
-                ;
-
-        // Volley.getInstance(this).addToRequestQueue(stringRequest);
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
-
+        return monthName;
 
     }
 

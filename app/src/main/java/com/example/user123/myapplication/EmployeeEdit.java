@@ -112,7 +112,7 @@ public class EmployeeEdit extends BaseActivity {
 
 
 
-        String URL = "http://192.168.0.30:5544/api/EmployeeApi/GetEmpById";
+        String URL = "http://103.228.112.79:100/api/EmployeeApi/GetEmpById";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -262,7 +262,7 @@ Log.e("Monthhhhhhhhhh",""+cal.get(Calendar.MONTH));
 
 
 
-        String URL = "http://192.168.0.30:5544/api/EmployeeApi/AddEditEmployee";
+        String URL = "http://103.228.112.79:100/api/EmployeeApi/AddEditEmployee";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,

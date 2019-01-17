@@ -68,9 +68,9 @@ public class EmpFragment extends Fragment {
         Emplist = new ArrayList<>();
         FloatingActionButton fab = RootView.findViewById(R.id.fab2);
 
-        Bundle bundle = this.getArguments();
-        compID = bundle.getString("CompID");
-        cname= bundle.getString("CompanyName");
+        Bundle abundle = this.getArguments();
+        compID = abundle.getString("CompID");
+        cname= abundle.getString("CompanyName");
 
 
 
@@ -84,6 +84,7 @@ public class EmpFragment extends Fragment {
                 intent.putExtra("CompanyName",cname);
                 intent.putExtra("ToolText","New Employee");
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 
@@ -105,7 +106,7 @@ public class EmpFragment extends Fragment {
     private void loadrecyclerviewdata() {
         p1= ProgressDialog.show(getContext(),"Downloading","Please wait");
 
-        String URL = "http://192.168.0.30:5544/api/EmployeeApi/GetAllEmpByCompId";
+        String URL = this.getString(R.string.Local_URL)+"/api/EmployeeApi/GetAllEmpByCompId";
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override
@@ -169,7 +170,7 @@ public class EmpFragment extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         p1.dismiss();
-                        Toast.makeText(getContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "No Response From Server ", Toast.LENGTH_LONG).show();
 
                     }
                 }) {
@@ -179,7 +180,7 @@ public class EmpFragment extends Fragment {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("CompId", compID);
 
-                Log.e("Jsonnnn",""+compID);
+                Log.e("compIDDDDDD",""+cname);
                 return param;
             }
 
@@ -189,8 +190,7 @@ public class EmpFragment extends Fragment {
                 param.put("Content-Type","application/x-www-form-urlencoded");
                 return param;
             }
-        }
-                ;
+        };
 
         // Volley.getInstance(this).addToRequestQueue(stringRequest);
         RequestQueue requestQueue= Volley.newRequestQueue(getActivity());

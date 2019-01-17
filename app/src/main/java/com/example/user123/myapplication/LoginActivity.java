@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -32,10 +34,10 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     TextView textView,submitlog;
     EditText uname,pword;
-    String code,message,usertype,ownerId;
+    String code,message,usertype,ownerId,uID,LoginName,OwnerUsername;
     ProgressDialog asyncDialog;
     SharedPreferences sp;
-
+    CheckBox logCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,9 @@ public class LoginActivity extends AppCompatActivity {
         pword =(EditText) findViewById(R.id.pasword);
         pword.setImeOptions(EditorInfo.IME_ACTION_DONE);
         submitlog = findViewById(R.id.login);
+        logCheck=findViewById(R.id.logcheck);
+        boolean isChecked = false;
         asyncDialog = new ProgressDialog(LoginActivity.this);
-
 
 
 
@@ -56,6 +59,10 @@ public class LoginActivity extends AppCompatActivity {
        submitlog.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+
+
+
+
                asyncDialog.setTitle("login");
                asyncDialog.setMessage("Please Wait...");
                //show dialog
@@ -71,9 +78,24 @@ public class LoginActivity extends AppCompatActivity {
 
                }
             else {
-                   asyncDialog.show();
+                   SharedPreferences settings = getSharedPreferences("PREFS_NAME", 0);
+                   SharedPreferences.Editor editor1 = settings.edit();
 
-                   Log.e("testttttt","inside elseeeeeeee");
+                   if (logCheck.isChecked()) {
+
+                       editor1.putBoolean("isChecked", true);
+
+                       editor1.apply();
+
+
+                       Log.e("boolllll", "inside" + true);
+                   }
+                   else{
+                       editor1.putBoolean("isChecked", false);
+
+                   }
+
+                   asyncDialog.show();
                    Login();
                }
 
@@ -89,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent =new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -97,9 +120,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        String URL = "http://192.168.0.30:5544/api/userapi/login";
+        String URL =this.getString(R.string.Local_URL) +"/api/userapi/login";
 
-
+        Log.e("uttutut", "" + R.string.Local_URL);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override
@@ -115,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject object     = new JSONObject(response);
                             JSONArray jsonArray   = object.getJSONArray("LoginResponse");
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
+
                             code= jsonObject.getString("responseCode");
                             message=jsonObject.getString("responseMessage");
 
@@ -124,13 +148,21 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (code.equals("0")) {
 
+                                uID =jsonObject.getString("userId");
+
                                 usertype=jsonObject.getString("userType");
                                 ownerId=jsonObject.getString("ownerId");
+                                LoginName=jsonObject.getString("Name");
+                                OwnerUsername=jsonObject.getString("UserName");
 
                                 sp =getSharedPreferences("MyPref",MODE_PRIVATE);
                                 SharedPreferences.Editor editor =sp.edit();
                                 editor.putString("OwnerID",ownerId);
                                 editor.putString("UserType",usertype);
+                                editor.putString("LoginUserID",uID);
+                                editor.putString("LoginName",LoginName);
+                                editor.putString("LoggedUsername",OwnerUsername);
+
                                 editor.apply();
 
                                 Intent intent =new Intent(LoginActivity.this,HomeActivity.class);
@@ -159,7 +191,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         asyncDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "No Response From Server", Toast.LENGTH_LONG).show();
 
                     }
                 })

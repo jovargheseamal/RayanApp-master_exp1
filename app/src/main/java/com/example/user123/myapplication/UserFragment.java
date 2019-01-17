@@ -40,7 +40,7 @@ public class UserFragment extends Fragment {
 
     // FloatingActionButton fab = getView().findViewById(R.id.fab);
 
-    String compID;
+    String compID,cpname;
     RecyclerView recyclerView;
     ProgressDialog p1;
     private RecyclerView.Adapter adapter;
@@ -67,8 +67,14 @@ public class UserFragment extends Fragment {
         Bundle abBundle = this.getArguments();
         if (abBundle != null) {
             compID = abBundle.getString("CompID");
+            cpname= abBundle.getString("CompanyName");
 
             FloatingActionButton fab = RootView.findViewById(R.id.fab3);
+
+
+
+            loadrecyclerviewdata();
+
 
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -76,7 +82,10 @@ public class UserFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), AddUser.class);
                     intent.putExtra("ToolText", "New User");
                     intent.putExtra("CompID", compID);
+                    intent.putExtra("CompanyName", cpname);
                     startActivity(intent);
+                    getActivity().finish();
+
                 }
             });
 
@@ -84,7 +93,7 @@ public class UserFragment extends Fragment {
 
         }
 
-        loadrecyclerviewdata();
+
 
         return RootView;
 
@@ -94,7 +103,7 @@ public class UserFragment extends Fragment {
     private void loadrecyclerviewdata() {
         p1= ProgressDialog.show(getContext(),"Downloading","Please wait");
 
-        String URL = "http://192.168.0.30:5544/api/UserApi/GetAllUsersByCompId";
+        String URL = this.getString(R.string.Local_URL)+"/api/UserApi/GetAllUsersByCompId";
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override
@@ -152,7 +161,7 @@ public class UserFragment extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         p1.dismiss();
-                        Toast.makeText(getContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "No Response From Server ", Toast.LENGTH_LONG).show();
 
                     }
                 }) {

@@ -143,7 +143,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
                             {
 
 
-                                String URL = "http://192.168.0.30:5544/api/Companyapi/DeleteCompany";
+                                String URL = context.getString(R.string.Local_URL)+"/api/Companyapi/DeleteCompany";
 
 
                                 StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
@@ -166,6 +166,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
                                                     }
 
                                     Intent intent = new Intent(context, ViewCompanyActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     context.getApplicationContext().startActivity(intent);
                                     ((ViewCompanyActivity)context).finish();
                                                     //CMP_Name,ContactPerson,TradeLicence,TRN,LabourCard,Immigration,Tenancy;
@@ -185,7 +186,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
                                             @Override
                                             public void onErrorResponse(VolleyError error) {
                                                 // asyncDialog.dismiss();
-                                                Toast.makeText(context,error.getMessage(),Toast.LENGTH_LONG).show();
+                                                Toast.makeText(context, "No Response From Server ", Toast.LENGTH_LONG).show();
 
                                             }
                                         }) {

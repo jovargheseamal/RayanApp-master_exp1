@@ -32,7 +32,7 @@
                 >
 
                 <LinearLayout
-                    android:layout_marginTop="0dp"
+                    android:layout_marginTop="20dp"
                     android:id="@+id/editprof"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -42,8 +42,8 @@
                         android:clickable="true"
                         android:id="@+id/editprofile"
                         android:layout_marginRight="10dp"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:src="@drawable/edit"/>
 
                 </LinearLayout>
@@ -60,11 +60,13 @@
 
                 <android.support.v7.widget.CardView
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
                     app:cardElevation="1dp"
                     android:padding="10dp"
-                    android:layout_width="140dp"
-                    android:layout_height="140dp"
-                    app:cardCornerRadius="75dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    app:cardCornerRadius="60dp"
+                    android:shape="ring"
                     app:cardBackgroundColor="@color/layoutBG">
 
                     <TextView
@@ -79,12 +81,14 @@
                 </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/profup"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="bottom|end"
                         app:cardCornerRadius="20dp"
                         android:layout_margin="2dp"
                         app:cardElevation="3dp"
+                        android:clickable="true"
                         >
 
                         <ImageView
@@ -106,7 +110,7 @@
                     android:textColor="@color/headerfont"
                     android:layout_below="@+id/userprofpic"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:hint="Admin Name"
                     android:textStyle="bold"
                     android:gravity="center"
@@ -116,10 +120,10 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:hint="User name"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:id="@+id/profcmpnyuname"
                     android:layout_below="@id/cmpnyname"/>
 
@@ -147,6 +151,7 @@
                          android:textSize="15dp"/>
 
                      <LinearLayout
+                         android:layout_marginBottom="10dp"
                          android:orientation="horizontal"
                          android:layout_width="match_parent"
                          android:gravity="center"
@@ -158,9 +163,9 @@
                              android:layout_weight="1"
                              android:layout_marginTop="0dp"
                              android:layout_width="match_parent"
-                             android:layout_height="50dp"
+                             android:layout_height="wrap_content"
                              android:padding="10dp"
-                             android:textColor="@color/headerfont"
+                             android:textColor="@color/secondary"
                              android:text="Company Name"
 
                              />
@@ -172,10 +177,9 @@
                              android:padding="10dp"
 
                              android:textColor="@color/headerfont"
-                             android:text="Company Name1,
-                                           Company Name2,
+                             android:text="Company Name1
+                                           Company Name2
                                            Company Name3"
-
                              />
 
                      </LinearLayout>
@@ -183,6 +187,7 @@
 
 
                      <LinearLayout
+                         android:layout_marginBottom="10dp"
                          android:layout_width="match_parent"
                          android:layout_height="wrap_content"
                          android:orientation="horizontal">
@@ -193,9 +198,9 @@
                     android:layout_weight="1"
 
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:textColor="@color/headerfont"
+                    android:textColor="@color/secondary"
                     android:text="Trade Liscence"
 
                     />
@@ -207,7 +212,7 @@
                              android:layout_height="wrap_content"
                              android:padding="10dp"
                              android:textColor="@color/headerfont"
-                             android:text="Trade Liscence"
+                             android:text="Trade Licence"
                              android:id="@+id/tradelis"
                              />
                      </LinearLayout>
@@ -238,6 +243,7 @@
                             android:textSize="15dp"/>
 
                         <LinearLayout
+                            android:layout_marginBottom="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
@@ -250,7 +256,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="10dp"
                                 android:text="Emirates ID"
-                                android:textColor="@color/headerfont"
+                                android:textColor="@color/secondary"
 
                                 />
 
@@ -270,6 +276,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_marginBottom="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
@@ -277,7 +284,7 @@
                                 android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/headerfont"
+                                android:textColor="@color/secondary"
                                 android:padding="10dp"
                                 android:text="Passport"
                                 />

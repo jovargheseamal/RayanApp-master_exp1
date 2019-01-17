@@ -20,9 +20,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class HomeActivity extends BaseActivity implements OnMapReadyCallback {
 
-    TextView switchtxt,dashtxt;
+    TextView switchtxt,dashtxt,name,uname,prof;
     private GoogleMap mMap;
-    String ownerID;
+    String ownerID,Name,Uname;
     LinearLayout btncmpny,btnprofile,btnnotify,btnnews,btncontact;
 
     @Override
@@ -38,8 +38,21 @@ public class HomeActivity extends BaseActivity implements OnMapReadyCallback {
         getLayoutInflater().inflate(R.layout.activity_home_edit, contentFrameLayout);
 
 
+        name =findViewById(R.id.Name);
+        uname =findViewById(R.id.Uname);
+        prof =findViewById(R.id.profile);
+
+
+
         SharedPreferences keys =getSharedPreferences("MyPref",MODE_PRIVATE);
         ownerID =keys.getString("OwnerID",null);
+        Name =keys.getString("LoginName",null);
+        Uname =keys.getString("LoggedUsername",null);
+
+
+        name.setText(Name);
+        uname.setText(Uname);
+        prof.setText(Name.substring(0,1));
 
         Log.e("cominggggggg","fdfdfdfdf"+ownerID);
 

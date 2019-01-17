@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +39,10 @@ public class ViewEmployeeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_employee);
+
+
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame); //Remember this is the FrameLayout area within your activity_main.xml
+        getLayoutInflater().inflate(R.layout.activity_view_employee, contentFrameLayout);
 
 
         Toolbar tb=getToolBar();
@@ -74,8 +78,8 @@ public class ViewEmployeeActivity extends BaseActivity {
                 intent.putExtra("ToolText","Edit Employee");
                 intent.putExtra("EmpID",empid);
                 intent.putExtra("CompID",compId);
-
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -89,7 +93,7 @@ public class ViewEmployeeActivity extends BaseActivity {
 
 
 
-        String URL = "http://192.168.0.30:5544/api/EmployeeApi/GetEmpById";
+        String URL = this.getString(R.string.Local_URL)+"/api/EmployeeApi/GetEmpById";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -147,17 +151,107 @@ public class ViewEmployeeActivity extends BaseActivity {
                             e.printStackTrace();
                         }
 
+
                         Name.setText(name);
-                        Cname.setText(cname);
-                        ContactNo.setText(contactNo);
-                        Fileno.setText(fileno);
-                        PassportNum.setText(passportNum);
-                        EmID.setText(Emid);
-                        WorkPermit.setText(workPermit);
-                        UIDno.setText(uidno);
-                        Address.setText(address);
-                        DOB.setText(dob);
-                        Email.setText(email);
+
+
+                        if (cname != null && !cname.isEmpty() && !cname.equals("null")) {
+                            Cname.setText(cname);
+                        }
+                        else
+                        {
+                            Cname.setText("N/A");
+                        }
+
+
+                        if (contactNo != null && !contactNo.isEmpty() && !contactNo.equals("null")) {
+                            ContactNo.setText(contactNo);
+                        }
+                        else
+                        {
+                            ContactNo.setText("N/A");
+                        }
+
+
+                        if (fileno != null && !fileno.isEmpty() && !fileno.equals("null")) {
+                            Fileno.setText(fileno);
+                        }
+                        else
+                        {
+                            Fileno.setText("N/A");
+                        }
+
+
+
+                        if (passportNum != null && !passportNum.isEmpty() && !passportNum.equals("null")) {
+                            PassportNum.setText(passportNum);
+                        }
+                        else
+                        {
+                            PassportNum.setText("N/A");
+                        }
+
+                        if (Emid != null && !Emid.isEmpty() && !Emid.equals("null")) {
+                            EmID.setText(Emid);
+                        }
+                        else
+                        {
+                            EmID.setText("N/A");
+                        }
+
+                        if (workPermit != null && !workPermit.isEmpty() && !workPermit.equals("null")) {
+                            WorkPermit.setText(workPermit);
+                        }
+                        else
+                        {
+                            WorkPermit.setText("N/A");
+                        }
+
+                        if (uidno != null && !uidno.isEmpty() && !uidno.equals("null")) {
+                            UIDno.setText(uidno);
+                        }
+                        else
+                        {
+                            UIDno.setText("N/A");
+                        }
+                        if (address != null && !address.isEmpty() && !address.equals("null")) {
+                            Address.setText(address);
+                        }
+                        else
+                        {
+                            Address.setText("N/A");
+                        }
+
+
+                        if (dob != null && !dob.isEmpty() && !dob.equals("null")) {
+                            DOB.setText(dob);
+                        }
+                        else
+                        {
+                            DOB.setText("N/A");
+                        }
+
+                        if (email != null && !email.isEmpty() && !email.equals("null")) {
+                            Email.setText(email);
+                        }
+                        else
+                        {
+                            Email.setText("N/A");
+                        }
+
+
+
+
+//                        Cname.setText(cname);
+//                        ContactNo.setText(contactNo);
+//                        Fileno.setText(fileno);
+//                        PassportNum.setText(passportNum);
+//                        EmID.setText(Emid);
+//                        WorkPermit.setText(workPermit);
+//                        UIDno.setText(uidno);
+//                        Address.setText(address);
+//                        DOB.setText(dob);
+//                        Email.setText(email);
 
                         //  Name,Cname, ContactNo, Fileno, PassportNum, EmID, WorkPermit, UIDno,Address,DOB,Email;
 
@@ -171,8 +265,7 @@ public class ViewEmployeeActivity extends BaseActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         asyncdialog.dismiss();
-                        Toast.makeText(ViewEmployeeActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
-
+                        Toast.makeText(getApplicationContext(), "No Response From Server ", Toast.LENGTH_LONG).show();
                     }
                 })
         {

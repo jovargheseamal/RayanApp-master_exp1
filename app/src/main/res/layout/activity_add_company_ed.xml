@@ -49,6 +49,7 @@
 
 
                 <EditText
+                    android:inputType="textCapSentences"
                     android:id="@+id/Company_Name"
                     android:focusableInTouchMode="true"
                     android:layout_marginTop="8dp"
@@ -80,6 +81,7 @@
                     />
 
                 <EditText
+                    android:inputType="textCapSentences"
                     android:id="@+id/Contact_Person"
                     android:layout_marginTop="8dp"
                     android:padding="10dp"
@@ -113,6 +115,7 @@
 
 
                 <EditText
+                    android:inputType="textCapSentences"
                     android:id="@+id/Trade_Licence"
                     android:padding="10dp"
                     android:layout_marginTop="8dp"
@@ -234,6 +237,7 @@
 
 
                 <EditText
+                    android:inputType="textCapSentences"
                     android:id="@+id/TRN"
                     android:layout_marginTop="8dp"
                     android:padding="10dp"
@@ -265,6 +269,7 @@
                     />
 
                 <EditText
+                    android:inputType="textCapSentences"
                     android:id="@+id/Labour_Card_No"
                     android:padding="10dp"
                     android:layout_marginTop="8dp"
@@ -297,6 +302,7 @@
                     />
 
                 <EditText
+                    android:inputType="textCapSentences"
                     android:id="@+id/Immigration_Card_no"
                     android:padding="10dp"
                     android:layout_marginTop="8dp"
@@ -411,6 +417,7 @@
 
 
                 <EditText
+                    android:inputType="textCapSentences"
                     android:id="@+id/Tenancy"
                     android:padding="10dp"
                     android:layout_marginTop="8dp"

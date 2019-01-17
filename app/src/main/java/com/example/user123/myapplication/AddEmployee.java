@@ -2,6 +2,7 @@ package com.example.user123.myapplication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -33,34 +34,36 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class AddEmployee extends BaseActivity {
 
-    TextView txtempl, SubmitEmp, CompName;
+    TextView txtempl, SubmitEmp,CompName;
 
 
-    String name, cName, contactNo, fileno, passportNum, Emid, workPermit, uidno, address, dob, email;
+    String name, cName, contactNo, fileno, passportNum, Emid,PassExp, workPermit,workPermitEXP,VisaExp, uidno, address, dob, email,logUsID;
 
 
     String Bday, bmnth, byr, pday, pmnth, pyear, wpday, wpmnth, wpyear, vday, vmonth, vyear, compID, cname, toolbar, empid;
 
     ProgressDialog asyncDialog;
 
-    EditText EmpName, Address, Contact, Email, EMID, PassportNO, WorkPermit, UIDno, FileNo;
+    EditText  EmpName, Address, Contact, Email, EMID, PassportNO, WorkPermit, UIDno, FileNo;
 
     String array_day[] = {"DD", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
             "31"};
 
+   // String array_Mnth[] = {"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
     String array_Mnth[] = {"MM", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     String array_Year[] = {"YY", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040"};
 
 
     String array_BYear[] = {"YY", "1985", "1986", "1986", "1987", "1988", "1989", "1990", "1991", "1992",
-            "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002"
-            , "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012",
+            "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001","2002"
+            , "2003", "2004", "2005", "2006","2007","2008","2009","2010","2011","2012",
             "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018"};
 
 
@@ -80,7 +83,11 @@ public class AddEmployee extends BaseActivity {
         toolbar = abBundle.getString("ToolText");
         empid = abBundle.getString("EmpID");
 
-        Log.e("tooooool", "" + toolbar);
+        SharedPreferences keys =getSharedPreferences("MyPref",MODE_PRIVATE);
+        logUsID = keys.getString("LoginUserID",null);
+
+
+        Log.e("cnameeeeeee", "" + compID);
 
 
         ///spinner intialization//////////
@@ -120,7 +127,7 @@ public class AddEmployee extends BaseActivity {
         FileNo = findViewById(R.id.FileNo);
         SubmitEmp = findViewById(R.id.sbmtEMP);
 
-
+        CompName.setText(cname);
         ///day////////
 
         final ArrayAdapter<String> spinner_adapter = new ArrayAdapter<String>(this,
@@ -323,7 +330,7 @@ public class AddEmployee extends BaseActivity {
         if (toolbar.equals("Edit Employee")) {
 
 
-            String URL = "http://192.168.0.30:5544/api/EmployeeApi/GetEmpById";
+            String URL = this.getString(R.string.Local_URL)+"/api/EmployeeApi/GetEmpById";
 
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -367,8 +374,9 @@ public class AddEmployee extends BaseActivity {
                                     uidno = o.getString("UIDNumber");
                                     fileno = o.getString("FileNumber");
                                     cname = o.getString("CompanyName");
-
-
+                                    workPermitEXP=o.getString("WorkPermitExpiry");
+                                    VisaExp= o.getString("VisaExpiry");
+                                    PassExp = o.getString("PassportExpiry");
                                 }
 
 
@@ -377,36 +385,129 @@ public class AddEmployee extends BaseActivity {
                             }
 
 
-                            SimpleDateFormat curFormater = new SimpleDateFormat("dd-MM-yyyy");
-                            Date dateObj = null;
+                            Date d = null;
                             try {
-                                dateObj = curFormater.parse(dob);
+                                d = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).parse(dob);
                             } catch (ParseException e) {
-                                // TODO Auto-generated catch block
                                 e.printStackTrace();
                             }
                             Calendar cal = Calendar.getInstance();
-                            cal.setTimeInMillis(dateObj.getTime());
+                            cal.setTime(d);
 
 
 
 
-//  Bday,bmnth,byr,pday,pmnth,pyear,wpday,wpmnth,wpyear,vday,vmonth,vyear,compID,cname,toolbar,empid
+
+
 
                             Bday = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
-                            bmnth = Integer.toString(cal.get(Calendar.MONTH));
+                            try {
+                                bmnth = getMonth(dob);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
                             byr = Integer.toString(cal.get(Calendar.YEAR));
+                          //  Log.e("Monthhhhhhhhhh", "" + month_name);
 
                             int bd = spinner_adapter.getPosition(Bday);
                             int bm = _adaptermnth.getPosition(bmnth);
                             int by = _adapteryear.getPosition(byr);
 
-                            Log.e("Monthhhhhhhhhh", "" + by);
+
+                            try {
+                                d = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).parse(VisaExp);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+
+                            cal.setTime(d);
+                            Log.e("Monthhhhhhhhhh", "" + d);
+
+
+                            vday = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+                            try {
+                                vmonth = getMonth(VisaExp);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            vyear = Integer.toString(cal.get(Calendar.YEAR));
+
+
+                            int vd = spinner_adapter.getPosition(vday);
+                            int vm = _adaptermnth.getPosition(vmonth);
+                            int vy = adapteryear.getPosition(vyear);
+
+
+
+                            try {
+                                d = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).parse(workPermitEXP);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+
+                            cal.setTime(d);
+                            Log.e("Monthhhhhhhhhh", "" + d);
+
+
+                            wpday = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+                            try {
+                                wpmnth = getMonth(workPermitEXP);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            wpyear = Integer.toString(cal.get(Calendar.YEAR));
+
+
+                            int wd = spinner_adapter.getPosition(wpday);
+                            int wpm = _adaptermnth.getPosition(wpmnth);
+                            int wpy = adapteryear.getPosition(wpyear);
+
+
+
+
+                            try {
+                                d = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).parse(PassExp);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+
+                            cal.setTime(d);
+                            Log.e("Monthhhhhhhhhh", "" + d);
+
+
+                            pday = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+                            try {
+                                pmnth = getMonth(PassExp);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            pyear = Integer.toString(cal.get(Calendar.YEAR));
+
+
+
+                            int pd = spinner_adapter.getPosition(pday);
+                            int pm = _adaptermnth.getPosition(pmnth);
+                            int py = adapteryear.getPosition(pyear);
+
+
+                            pEXP_Day.setSelection(pd);
+                            pEXP_Month.setSelection(pm);
+                            pEXP_Year.setSelection(py);
+
+
 
                             bday.setSelection(bd);
                             bmonth.setSelection(bm);
                             byear.setSelection(by);
 
+
+                            vEXP_Day.setSelection(vd);
+                            vEXP_Month.setSelection(vm);
+                            vEXP_Year.setSelection(vy);
+
+                            wpEXP_Day.setSelection(wd);
+                            wpEXP_Month.setSelection(wpm);
+                            wpEXP_Year.setSelection(wpy);
 
                             EmpName.setText(name);
                             CompName.setText(cname);
@@ -474,6 +575,7 @@ public class AddEmployee extends BaseActivity {
             public void onClick(View v) {
                 asyncDialog.setTitle("Employee Registration");
                 asyncDialog.setMessage("On Process...");
+                asyncDialog.show();
                 EmployeeRegister();
 
             }
@@ -486,7 +588,7 @@ public class AddEmployee extends BaseActivity {
     public void EmployeeRegister() {
 
 
-        String URL = "http://192.168.0.30:5544/api/EmployeeApi/AddEditEmployee";
+        String URL = this.getString(R.string.Local_URL)+"/api/EmployeeApi/AddEditEmployee";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
@@ -519,7 +621,7 @@ public class AddEmployee extends BaseActivity {
                             }*/
 
                             Intent intent = new Intent(AddEmployee.this, MainActivity.class);
-                            intent.putExtra("Key", "Company");
+                            intent.putExtra("Key", "Employee");
                             intent.putExtra("CompID", compID);
                             startActivity(intent);
                             finish();
@@ -562,6 +664,7 @@ public class AddEmployee extends BaseActivity {
                 param.put("UIDNumber", UIDno.getText().toString());
                 param.put("FileNumber", FileNo.getText().toString());
                 param.put("Mode", toolbar.substring(0, 1));
+                param.put("LoginUserID", logUsID);
 
                 if (toolbar.substring(0,1).equals("E"))
                 {
@@ -585,6 +688,16 @@ public class AddEmployee extends BaseActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(AddEmployee.this);
         requestQueue.add(stringRequest);
 
+
+    }
+
+    private static String getMonth(String date) throws ParseException{
+        Date d = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).parse(date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        String monthName = new SimpleDateFormat("MMM").format(cal.getTime());
+
+        return monthName;
 
     }
 

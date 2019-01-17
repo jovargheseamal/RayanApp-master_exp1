@@ -36,7 +36,7 @@ public class ViewCompanyActivity extends BaseActivity  {
 
     FloatingActionButton floatbttn;
     RecyclerView recyclerView;
-    String OwnerID,userType;
+    String OwnerID,userType,code, message;
     ProgressDialog p1;
     private RecyclerView.Adapter adapter;
     private List<CompanyModelClass> Complist;
@@ -80,6 +80,7 @@ public class ViewCompanyActivity extends BaseActivity  {
                 Intent intent = new Intent(ViewCompanyActivity.this, AddCompany.class);
                 intent.putExtra("ToolText","New Company");
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -95,7 +96,9 @@ public class ViewCompanyActivity extends BaseActivity  {
     private void loadrecyclerviewdata() {
         p1= ProgressDialog.show(ViewCompanyActivity.this,"Downloading","Please wait");
 
-        String URL = "http://192.168.0.30:5544/api/Companyapi/GetAllCompByOwnerId";
+        String URL = this.getString(R.string.Local_URL)+"/api/Companyapi/GetAllCompByOwnerId";
+
+
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override
@@ -103,60 +106,60 @@ public class ViewCompanyActivity extends BaseActivity  {
 
                         Log.e("Jsonnnn",""+response);
                         p1.dismiss();
-                        if((!response.equals("[]"))&&(!response.equals("null"))) {
+
                             try {
 
                                 JSONObject o     = new JSONObject(response);
-                                JSONArray json_array   = o.getJSONArray("CompanyDetails");
+                                JSONArray json_array2 =o.getJSONArray("CompanyResponse");
+                                JSONObject jsonObject = json_array2.getJSONObject(0);
+                                code =jsonObject.getString("responseCode");
+                                message=jsonObject.getString("responseMessage");
 
+                                Log.e("resppppppp",""+code);
+                                if (code.equals("0"))
+                                {
 
-//                                try {
-//                                    jsonarray = response.getJSONArray("Table1");
-//                                    jsonarray1 = object.getJSONArray("Table1");
-//
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
+                                    JSONArray json_array   = o.getJSONArray("CompanyDetails");
 
-                           /* JSONObject json_object =new JSONObject(response);
-                            JSONArray json_array=json_object.getJSONArray(response);*/
-//                                JSONArray json_array = new JSONArray(response);
-                                int j;
-                                for (j = 0; j < json_array.length(); j++) {
-                                     o = json_array.getJSONObject(j);
-                                    CompanyModelClass items = new CompanyModelClass(o.getString("compId"),o.getString("ownerName"),
-                                                                                    o.getString("compName"), o.getString("contactPerson"),
-                                                                                    o.getString("contactNo"),o.getString("tradeLicence"),
-                                                                                    o.getString("tradeLicenceExpiry"),o.getString("trn"),
-                                                                                    o.getString("labourCardNumber"),o.getString("immigrationCardNumber"),
-                                                                                    o.getString("immigrationCardExpiry"), o.getString("tenancy"),o.getString("employeeCount"));
-                                    Complist.add(items);
+                                    int j;
+                                    for (j = 0; j < json_array.length(); j++) {
+                                        o = json_array.getJSONObject(j);
+                                        CompanyModelClass items = new CompanyModelClass(o.getString("compId"),o.getString("ownerName"),
+                                                o.getString("compName"), o.getString("contactPerson"),
+                                                o.getString("contactNo"),o.getString("tradeLicence"),
+                                                o.getString("tradeLicenceExpiry"),o.getString("trn"),
+                                                o.getString("labourCardNumber"),o.getString("immigrationCardNumber"),
+                                                o.getString("immigrationCardExpiry"), o.getString("tenancy"),o.getString("employeeCount"));
+                                        Complist.add(items);
+
+                                    }
+                                    adapter = new CompanyAdapter(Complist, getApplicationContext());
+                                    recyclerView.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
 
                                 }
-                                adapter = new CompanyAdapter(Complist, getApplicationContext());
-                                recyclerView.setAdapter(adapter);
-                                adapter.notifyDataSetChanged();
+
+
+                                else {
+                                    Toast.makeText(ViewCompanyActivity.this,message,Toast.LENGTH_LONG).show();
+                                }
+
+
 
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
-                        else
-                        {
-                            Toast.makeText(ViewCompanyActivity.this,"No Company to Display",Toast.LENGTH_LONG).show();
-                        }
 
 
 
-
-                    }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         p1.dismiss();
-                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "No Response From Server ", Toast.LENGTH_LONG).show();
 
                     }
                 }) {

@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -79,20 +80,16 @@ public class MainActivity extends BaseActivity {
         if(Key.equals("Company"))
       {
 
-          Bundle bundle= new Bundle();
+            Bundle bundle= new Bundle();
 
-//          bundle.putString("CompanyName",company);
-          bundle.putString("CompID",compID);
-//          bundle.putString("ContactPerson",cp);
-//          bundle.putString("TradeLicence",trl);
-//          bundle.putString("LabourCNo",lcn);
-//          bundle.putString("LabourCNo",trn);
-//          bundle.putString("ImmigrationNo",icn);
-//          bundle.putString("Tenancy",tncy);
-          companyFragment.setArguments(bundle);
-          empFragment.setArguments(bundle);
-          userFragment.setArguments(bundle);
-          setFragment(companyFragment);
+            bundle.putString("CompID",compID);
+            bundle.putString("CompanyName",company);
+          Log.e("compIDDDDDD",""+company);
+            companyFragment.setArguments(bundle);
+            empFragment.setArguments(bundle);
+            userFragment.setArguments(bundle);
+
+            setFragment(companyFragment);
 
 
       }
@@ -102,12 +99,15 @@ public class MainActivity extends BaseActivity {
        else if (Key.equals("User"))
 
        {
-
+           tvAppName.setText("Users");
            Bundle bundle= new Bundle();
            bundle.putString("CompID",compID);
+           bundle.putString("CompanyName",company);
            userFragment.setArguments(bundle);
-           setFragment(userFragment);
+           empFragment.setArguments(bundle);
            companyFragment.setArguments(bundle);
+           setFragment(userFragment);
+
            navigationMenu.getMenu().findItem(R.id.users).setChecked(true);
 
 
@@ -116,9 +116,11 @@ public class MainActivity extends BaseActivity {
         else if (Key.equals("Employee"))
 
         {
-
+            tvAppName.setText("Employees");
             Bundle bundle= new Bundle();
             bundle.putString("CompID",compID);
+            bundle.putString("CompanyName",company);
+            Log.e("compIDDDDDD","empppppppp"+company);
             empFragment.setArguments(bundle);
             companyFragment.setArguments(bundle);
             setFragment(empFragment);
@@ -148,7 +150,9 @@ public class MainActivity extends BaseActivity {
 
                     Bundle bundle= new Bundle();
                     bundle.putString("CompID",compID);
+                    bundle.putString("CompanyName",company);
                     tvAppName.setText("Company");
+                    empFragment.setArguments(bundle);
                     companyFragment .setArguments(bundle);
                     setFragment(companyFragment);
 
@@ -160,6 +164,8 @@ public class MainActivity extends BaseActivity {
                 {
                     Bundle bundle= new Bundle();
                     bundle.putString("CompID",compID);
+                    bundle.putString("CompanyName",company);
+                    empFragment.setArguments(bundle);
                     userFragment.setArguments(bundle);
 
 
@@ -171,6 +177,7 @@ public class MainActivity extends BaseActivity {
                 {
                     Bundle bundle= new Bundle();
                     bundle.putString("CompID",compID);
+                    bundle.putString("CompanyName",company);
                     empFragment.setArguments(bundle);
                     tvAppName.setText("Employees");
                     setFragment(empFragment);

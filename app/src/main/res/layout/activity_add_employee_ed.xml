@@ -48,14 +48,16 @@
 
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/emp_comp"
                         android:focusableInTouchMode="true"
                         android:layout_marginTop="8dp"
                         android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textColor="@android:color/black"
                         android:layout_width="match_parent"
                         android:background="@color/gridbg"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:hint="Company Name"
                         />
 
@@ -80,6 +82,7 @@
                     />
 
                     <EditText
+                        android:inputType="textCapSentences"
                         android:id="@+id/emp_name"
                         android:layout_marginTop="8dp"
                         android:padding="10dp"
@@ -116,6 +119,7 @@
                     />
 
                     <EditText
+                        android:inputType="textCapSentences"
                         android:id="@+id/empAddress"
                         android:padding="10dp"
                         android:background="@color/gridbg"
@@ -147,6 +151,7 @@
                     />
 
                     <EditText
+                        android:inputType="number"
                         android:id="@+id/empPh"
                         android:padding="10dp"
                         android:background="@color/gridbg"
@@ -273,6 +278,8 @@
                     />
 
                     <EditText
+
+                        android:inputType="textWebEmailAddress"
                         android:id="@+id/empEmail"
                         android:padding="10dp"
                         android:background="@color/gridbg"
@@ -303,6 +310,7 @@
 
 
                     <EditText
+                        android:inputType="textCapSentences"
                         android:id="@+id/empEMID"
                         android:padding="10dp"
                         android:background="@color/gridbg"
@@ -335,6 +343,7 @@
 
 
                     <EditText
+                        android:inputType="textCapSentences"
                         android:id="@+id/empPasspotNO"
                         android:padding="10dp"
                         android:layout_marginTop="8dp"
@@ -453,6 +462,7 @@
 
 
                     <EditText
+                        android:inputType="textCapSentences"
                         android:id="@+id/EMPWorkPermit"
                         android:padding="10dp"
                         android:layout_marginTop="8dp"
@@ -656,6 +666,7 @@
 
 
                     <EditText
+                        android:inputType="textCapSentences"
                         android:id="@+id/UIDno"
                         android:padding="10dp"
                         android:layout_marginTop="8dp"
@@ -687,6 +698,7 @@
 
 
                     <EditText
+                        android:inputType="textCapSentences"
                         android:id="@+id/FileNo"
                         android:padding="10dp"
                         android:layout_marginTop="8dp"
