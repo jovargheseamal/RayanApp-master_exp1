@@ -53,8 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         boolean isChecked = false;
         asyncDialog = new ProgressDialog(LoginActivity.this);
 
-
-
+uname.setText("");
+pword.setText("");
 
        submitlog.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -223,12 +223,11 @@ public class LoginActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
         Log.e("reqqqqqqqqqq",""+stringRequest.toString());
 
+    }
 
-
-
-
-
-
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
 

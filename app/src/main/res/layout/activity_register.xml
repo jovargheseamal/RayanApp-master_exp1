@@ -58,21 +58,27 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 >
-   <android.support.design.widget.TextInputLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-       android:id="@+id/OwnerName1"
-       android:layout_marginTop="20dp"
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/OwnerName1"
 
-       >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <EditText
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name"/>
+
+
+                    <EditText
+                    android:layout_marginTop="5dp"
                     android:inputType="textCapSentences"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:imeOptions="actionNext"
                     android:padding="10dp"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Owner Name"
                     android:id="@+id/OwnerName"
@@ -80,46 +86,69 @@
 
                     />
 
-   </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
 
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/addrs1"
                     android:layout_below="@+id/cmpname1"
-                    android:layout_marginTop="20dp"
 
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"/>
+
+
+
+
+
 
                 <EditText
+                    android:layout_marginTop="5dp"
                     android:inputType="textCapSentences"
                     android:imeOptions="actionNext"
                     android:padding="10dp"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Address"
                     android:id="@+id/addrs"
                     android:background="@color/gridbg"
                     />
 
-                </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/email1"
                     android:layout_below="@+id/addrs1"
-                    android:layout_marginTop="20dp"
 
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"/>
+
+
+
+
 
                 <EditText
+                    android:layout_marginTop="5dp"
                     android:inputType="textWebEmailAddress"
                     android:imeOptions="actionNext"
                     android:padding="10dp"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email"
                     android:id="@+id/email"
@@ -127,91 +156,137 @@
                     />
 
 
-                </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/contactno1"
                     android:layout_below="@+id/email1"
-                    android:layout_marginTop="20dp"
 
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Number"/>
+
+
+
+
 
                 <EditText
-
+                    android:layout_marginTop="5dp"
                     android:imeOptions="actionNext"
                     android:padding="10dp"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:hint="Contact Number"
                     android:id="@+id/contactno"
                     android:background="@color/gridbg"
                     />
-                </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+
+
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/uname1"
                     android:layout_below="@+id/contactno1"
-                    android:layout_marginTop="20dp"
 
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User Name"/>
+
+
 
                 <EditText
-
+                    android:layout_marginTop="5dp"
                     android:imeOptions="actionNext"
                     android:padding="10dp"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="User Name"
                     android:id="@+id/uname"
                     android:background="@color/gridbg"
                     />
-                </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/cmpname1"
                     android:layout_below="@+id/OwnerName1"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                    >
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Company Name"/>
+
+
+
 
 
                 <EditText
+                    android:layout_marginTop="5dp"
                     android:inputType="textCapSentences"
                     android:imeOptions="actionNext"
                     android:padding="10dp"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Company Name"
                     android:id="@+id/cmpname"
                     android:background="@color/gridbg"
                     />
 
-                </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/paswd1"
                     android:layout_below="@+id/uname1"
-                    app:passwordToggleEnabled="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
                     android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Password"/>
+
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:passwordToggleEnabled="true"
 
 
                     >
 
+
+
                 <EditText
+                    android:layout_marginTop="5dp"
                     android:imeOptions="actionNext"
                     android:padding="10dp"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:hint="Password"
@@ -220,19 +295,36 @@
                     />
                 </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                </LinearLayout>
 
+
+
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/cpaswd1"
                     android:layout_below="@+id/paswd1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Confirm Password"/>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
                     app:passwordToggleEnabled="true">
                 <EditText
+                    android:layout_marginTop="5dp"
                     android:inputType="textPassword"
                     android:imeOptions="actionDone"
                     android:padding="10dp"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Confirm Password"
                     android:id="@+id/cnfmpaswd"
@@ -241,7 +333,7 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-
+                </LinearLayout>
             </RelativeLayout>
 
             <RelativeLayout

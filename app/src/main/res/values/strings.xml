@@ -41,11 +41,11 @@
         for a new family visa application till you finish the visa stamping for your dependents in UAE.</string>
 
     <string name="account">
-        <html><body style="text-align:justify">Accurate bookkeeping is indispensable to unceasing a fighting fit, steady, developing business.
+        Accurate bookkeeping is indispensable to unceasing a fighting fit, steady, developing business.
         While seemingly a simple and menial task, recording all the financial transactions of a company is a central aspect
         of the corporate accounting process.
-        Our accounting team is well endowed with vat amenable accounting and bookkeeping services.</body>
-        </html>
+        Our accounting team is well endowed with vat amenable accounting and bookkeeping.
+
     </string>
 
     <string name="Address">
@@ -56,11 +56,12 @@
     </string>
 
     <string name="cloud_URL">
-    http://192.168.0.30:5544
+     http://103.228.112.79:100
 
     </string>
+
     <string name="Local_URL">
-     http://103.228.112.79:100
+    http://192.168.0.30:5544
 
 
     </string>

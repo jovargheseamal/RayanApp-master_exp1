@@ -210,16 +210,17 @@ public class AddUser extends BaseActivity {
 
                                 startActivity(intent);
                                 finish();
-                                if(toolbar.equals("Edit User")) {
+                                    if(toolbar.equals("Edit User")) {
 
 
-                                    Toast.makeText(AddUser.this, "Edit successful", Toast.LENGTH_LONG).show();
+                                       Toast.makeText(AddUser.this, "Edit successful", Toast.LENGTH_LONG).show();
 
 
-                                }
-                                else {
-                                    Toast.makeText(AddUser.this, "User Registered", Toast.LENGTH_LONG).show();
-                                }
+                                       }
+                                     else
+                                         {
+                                        Toast.makeText(AddUser.this, "User Registered", Toast.LENGTH_LONG).show();
+                                        }
 
 
                             } else {
@@ -418,8 +419,17 @@ public class AddUser extends BaseActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
 
-
+        Intent intent = new Intent(AddUser.this, MainActivity.class);
+        intent.putExtra("Key","User");
+        intent.putExtra("CompID",compID);
+        intent.putExtra("CompanyName",compname);
+        Log.e("reqqqqqqqqqq",""+compID);
+        startActivity(intent);
+        finish();
+    }
 
 
 

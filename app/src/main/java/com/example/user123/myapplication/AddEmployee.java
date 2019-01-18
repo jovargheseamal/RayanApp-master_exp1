@@ -623,6 +623,7 @@ public class AddEmployee extends BaseActivity {
                             Intent intent = new Intent(AddEmployee.this, MainActivity.class);
                             intent.putExtra("Key", "Employee");
                             intent.putExtra("CompID", compID);
+                            intent.putExtra("CompanyName", cname);
                             startActivity(intent);
                             finish();
 
@@ -700,6 +701,20 @@ public class AddEmployee extends BaseActivity {
         return monthName;
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(AddEmployee.this, MainActivity.class);
+        intent.putExtra("Key", "Employee");
+        intent.putExtra("CompID", compID);
+        intent.putExtra("CompanyName", cname);
+        Log.e("reqqqqqqqqqq",""+compID);
+        startActivity(intent);
+        finish();
+    }
+
 
 }
 

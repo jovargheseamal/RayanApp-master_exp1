@@ -180,7 +180,7 @@ public class EmpFragment extends Fragment {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("CompId", compID);
 
-                Log.e("compIDDDDDD",""+cname);
+                Log.e("compIDDDDDD",""+compID);
                 return param;
             }
 

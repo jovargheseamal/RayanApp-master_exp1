@@ -1,5 +1,6 @@
 package com.example.user123.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -21,7 +22,7 @@ public class BaseActivity extends AppCompatActivity {
     public TextView head,prof;
     private NavigationView navigationView;
     String Name;
-
+    ProgressDialog progressDialog;
     public Toolbar getToolBar(){
         return toolbar;
     }
@@ -30,7 +31,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
 
-
+progressDialog = new ProgressDialog(this);
 
         SharedPreferences keys =getSharedPreferences("MyPref",MODE_PRIVATE);
 
@@ -96,8 +97,12 @@ public class BaseActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor1 = settings.edit();
                         editor1.putBoolean("isChecked", false);
                         editor1.apply();
+                        progressDialog.setTitle("Logout");
+                        progressDialog.setMessage("Clearing all Data");
+                        progressDialog.show();
                         intent = new Intent(BaseActivity.this, LoginActivity.class);
                         startActivity(intent);
+                        progressDialog.dismiss();
                         finish();
                         drawerLayout.closeDrawers();
                         break;
